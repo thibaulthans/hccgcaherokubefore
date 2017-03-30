@@ -31,8 +31,13 @@ form {  /** à revoir **/
   height: auto;
 }
 
-/* format du formulaire de contact pour tout les écrans quand ceux ci sont inférieurs à  1280px*/
+.input_error{
+  border-color: red;
+}
 
-
-
-/* information map pour écran taille tablette ou inférieur */
+.input_error:focus {
+    border-color: red;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 4px red;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 4px red;
+}
