@@ -11,7 +11,7 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top no_margin color_bleu_royal">
+      <nav class="navbar navbar-default navbar-fixed-top no_margin color_bleu_royal">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -21,7 +21,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="home">
+          <a class="navbar-brand" href="home.html">
             <div class="bloc_logo_s">
             <div class="div_g_s"><p class="style_logo_s">G</p></div>
             <div class="global div_milieu_s"><p class="style_logo_s">H</p></div>
@@ -35,12 +35,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a class="bleuroyal" href="hcc">HCC</a></li>
-            <li><a href="gca">GCA</a></li>
-            <li><a href="vousetes">Vous êtes ?</a></li>
-            <li><a href="devis">Devis</a></li>
-            <li><a href="recrutement">Recrutement</a></li>
-            <li><a href="contact">Contact</a></li>
+            <li><a class="bleuroyal" href="hcc.html">HCC</a></li>
+            <li><a href="gca.html">GCA</a></li>
+            <li><a href="vousetes.html">Vous êtes ?</a></li>
+            <li><a href="devis.html">Devis</a></li>
+            <li><a href="recrutement.html">Recrutement</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li>
               <form class="navbar-form navbar-right">
                 <div class="form-group">
@@ -76,13 +76,13 @@
                <h3>Vous pouvez aussi envoyer un mail:</h3>
                   </div>
 
-               <form action="#" method="post" class="formit">
+               <form action="#" name="formulairecontact" method="post" onSubmit="return valider()">
                  <div class="row">
                    <div class="col-lg-3 nopaddingleft">
                     <input type="name" class="form-control" placeholder="Nom">
                   </div>
                   <div class="col-lg-3 nopaddingleft">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" name="inputemail" id="email" class="form-control" placeholder="Email">
                   </div>
                   <div class="col-lg-3 nopaddingleft">
                     <input type="url" class="form-control" placeholder="Objet">
@@ -91,14 +91,14 @@
                 <div class="padding_vingtpx"></div>
                   <div class="row">
                     <div class="col-lg-9 nopaddingleft">
-                    <textarea class="form-control" placeholder="Votre message ici..." rows="5"></textarea>
+                    <textarea id="textarea" class="form-control" name="inputecrire" placeholder="Votre message ici..." rows="5"></textarea>
                     </div>
                   </div>
                 <div class="padding_vingtpx"></div>
 
                 <div class="row">
                   <div class="btn-group">
-                      <button class="btn btn-primary button_pers_small center_horizontal" type="button">Envoyer</button>
+                      <button class="btn btn-primary button_pers_small center_horizontal" id="valider" type="button">Envoyer</button>
                   </div>
                 </div>
 
@@ -168,6 +168,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/base.js"></script>
+<script src="js/contact.js"></script>
 
   </body>
 </html>
