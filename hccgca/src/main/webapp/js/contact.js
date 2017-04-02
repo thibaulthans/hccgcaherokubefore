@@ -1,6 +1,8 @@
 window.onload=function(){
 
 document.getElementById("valider").onclick = function() {formulaireContact()};
+document.getElementById("email").onkeypress = function() {formulaireContactMail()};
+document.getElementById("textarea").onkeypress = function() {formulaireContactText()};
 
 function formulaireContact(){
    champMail=document.formulairecontact.inputemail.value;
@@ -41,7 +43,7 @@ function formulaireContact(){
 
 
 
-    if(champEcrire.length < 20){
+    if(champEcrire.length < 30){
           document.getElementById("textarea").className += " input_error";
           bol=false;
           console.log("six");
@@ -53,6 +55,7 @@ function formulaireContact(){
       }
       if(bol && bol1 && bol2 && bol3){
         bolfinal=true;
+        document.formulairecontact.submit();
       }
       else{
         bolfinal=false;
@@ -60,5 +63,44 @@ function formulaireContact(){
      return bolfinal;
 }
 
+
+}
+
+//******************************************************
+
+function formulaireContactMail(){
+
+  champMail=document.formulairecontact.inputemail.value;
+
+  for(var j=1;j<(champMail.length);j++){
+    if(champMail.charAt(j)=="@"){
+       bolun=true;
+    }
+   }
+
+   for(var k=1;k<(champMail.length);k++){
+     if(champMail.charAt(k)=="."){
+        boldeux=true;
+     }
+    }
+
+     if(champMail.length >5 ){
+          boltrois=true;
+      }
+
+    if(bolun==true && boldeux==true && boltrois==true) {
+        document.getElementById("email").className = "form-control";
+    }
+}
+
+//***************************************************************
+
+function formulaireContactText(){
+
+  champTexte=document.formulairecontact.inputecrire.value;
+
+  if(champTexte.length>30){
+    document.getElementById("textarea").className = "form-control";
+  }
 
 }
