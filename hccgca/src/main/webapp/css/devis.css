@@ -19,3 +19,13 @@
 .but{
   width:100px;
 }
+
+.input_error{
+  border-color: red;
+}
+
+.input_error:focus {
+    border-color: red;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 4px red;
+    box
