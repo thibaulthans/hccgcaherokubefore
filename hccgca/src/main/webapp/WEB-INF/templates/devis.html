@@ -22,7 +22,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="home">
+        <a class="navbar-brand" href="home.html">
           <div class="bloc_logo_s">
           <div class="div_g_s"><p class="style_logo_s">G</p></div>
           <div class="global div_milieu_s"><p class="style_logo_s">H</p></div>
@@ -36,12 +36,12 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a class="bleuroyal" href="hcc">HCC</a></li>
-          <li><a href="gca">GCA</a></li>
-          <li><a href="vousetes">Vous êtes ?</a></li>
-          <li><a href="devis">Devis</a></li>
-          <li><a href="recrutement">Recrutement</a></li>
-          <li><a href="contact">Contact</a></li>
+          <li><a class="bleuroyal" href="hcc.html">HCC</a></li>
+          <li><a href="gca.html">GCA</a></li>
+          <li><a href="vousetes.html">Vous êtes ?</a></li>
+          <li><a href="devis.html">Devis</a></li>
+          <li><a href="recrutement.html">Recrutement</a></li>
+          <li><a href="contact.html">Contact</a></li>
           <li>
             <form class="navbar-form navbar-right">
               <div class="form-group">
@@ -59,69 +59,62 @@
       <div class="row">
       <div class="col-lg-4 center_horizontal">
         <h3 class="text_royalbleu">Informations générales</h3>
-        <form>
-            <select required class="form-control">
-                <option value="" disabled selected hidden>Secteur d'activité</option>
-                <option value="0">Agroalimentaire - Alimentation</option>
-                <option value="1">Architecture - Aménagement intérieur</option>
-                <option value="0">Artisanat - Métiers d'art</option>
-                <option value="1">Bâtiment - Travaux publics</option>
-                <option value="0">Immobilier</option>
-                <option value="1">Communication</option>
-                <option value="0">Culture - Spectacle</option>
-                <option value="1">Défense - Sécurité - Secours</option>
-                <option value="0">Droit</option>
-                <option value="1">Edition - Imprimerie - Livre</option>
-                <option value="0">Electronique - Informatique</option>
-                <option value="1">Formation</option>
+        <form name="formulairedevis" method="post" onsubmit="return formulaireDevis()">
+            <select required id="select_un" class="form-control" name="select_secteur_activite">
+                <option value="0" disabled selected hidden>Secteur d'activité</option>
+                <option value="1" id="testun">Agroalimentaire - Alimentation</option>
+                <option value="2" id="testdeux">Architecture - Aménagement intérieur</option>
+                <option value="3">Artisanat - Métiers d'art</option>
+                <option value="4">Bâtiment - Travaux publics</option>
+                <option value="5">Immobilier</option>
+                <option value="6">Communication</option>
+                <option value="7">Culture - Spectacle</option>
+                <option value="8">Défense - Sécurité - Secours</option>
+                <option value="9">Droit</option>
+                <option value="10">Edition - Imprimerie - Livre</option>
+                <option value="11">Electronique - Informatique</option>
+                <option value="12">Formation</option>
             </select>
 
-        </form>
         <div class="margin_dixpx"></div>
-        <form>
-            <select required class="form-control">
-                <option value="" disabled selected hidden>Chiffre d'affaire</option>
-                <option value="0">inférieur 200k</option>
-                <option value="1">entre 200k et 500k</option>
-                <option value="2">entre 500k et 1M</option>
-                <option value="3">entre 1M et 2M</option>
-                <option value="4">supérieur à 2M</option>
+            <select required class="form-control" id="select_deux" name="select_chiffre_affaire">
+                <option value="0" disabled selected hidden>Chiffre d'affaire</option>
+                <option value="1">inférieur 200k</option>
+                <option value="2">entre 200k et 500k</option>
+                <option value="3">entre 500k et 1M</option>
+                <option value="4">entre 1M et 2M</option>
+                <option value="5">supérieur à 2M</option>
             </select>
-        </form>
         <div class="margin_dixpx"></div>
-        <form>
-            <select required class="form-control">
-                <option value="" disabled selected hidden>Nombre de salarié</option>
-                <option value="0">0 à 10</option>
-                <option value="1">10 à 20</option>
-                <option value="0">20 à 50</option>
-                <option value="1">supérieur à 50</option>
+            <select required class="form-control" id="select_trois" name="select_nb_salarie">
+                <option value="0" disabled selected hidden>Nombre de salarié</option>
+                <option value="1">0 à 10</option>
+                <option value="2">10 à 20</option>
+                <option value="3">20 à 50</option>
+                <option value="4">supérieur à 50</option>
             </select>
-        </form>
         <div class="margin_dixpx"></div>
-        <form>
-            <select required class="form-control">
-                <option value="" disabled selected hidden>Missions</option>
-                <option value="0">Comptable</option>
-                <option value="1">social</option>
+            <select required class="form-control" id="select_quatre" name="select_mission">
+                <option value="0" disabled selected hidden>Missions</option>
+                <option value="1">Comptable</option>
+                <option value="2">social</option>
             </select>
-        </form>
         <div class="margin_dixpx"></div>
-          <input class="form-control" id="inputdefault" type="text" placeholder="Valeur moyenne d'une facture client">
+          <input name="inputmontant" class="form-control" id="montantfacture" type="text" placeholder="Valeur moyenne d'une facture client (euro)">
       </div>
 
       <div class="col-lg-4 center_horizontal">
         <h3 class="text_royalbleu">Coordonnées</h3>
         <div class="form-group">
-          <input class="form-control" id="inputdefault" type="text" placeholder="Nom">
+          <input name="inputnom" class="form-control" id="nom" type="text" placeholder="Nom">
         </div>
         <div class="margin_dixpx"></div>
         <div class="form-group">
-          <input class="form-control" id="inputdefault" type="text" placeholder="Prenom">
+          <input name="inputprenom" class="form-control" id="prenom" type="text" placeholder="Prenom">
         </div>
         <div class="margin_dixpx"></div>
         <div class="form-group">
-          <input class="form-control" id="inputdefault" type="text" placeholder="Mail">
+          <input name="inputemail" class="form-control" id="email" type="text" placeholder="Mail">
         </div>
         <div class="margin_dixpx"></div>
       </div>
@@ -133,14 +126,18 @@
           <textarea class="form-control noresize" rows="5" id="comment"></textarea>
         </div>
       </div>
-
   </div>
 
   <div class="row center_horizontal">
     <div class="btn-group">
-        <button class="btn btn-primary button_pers_small center_horizontal" type="button">Envoyer</button>
+        <input id="valider" value="Valider" class="btn btn-primary button_pers_small center_horizontal" type="button">
     </div>
   </div>
+
+</form>
+
+  <p id="reponse_formulaire"><p>
+
 
     <div class="margin_cinquantepx"></div>
 
@@ -206,6 +203,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/base.js"></script>
+<script src="js/devis.js"></script>
 
 </body>
 </html>
