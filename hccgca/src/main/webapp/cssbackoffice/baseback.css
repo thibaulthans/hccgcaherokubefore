@@ -1,0 +1,86 @@
+.style_body{
+  background-color: #f8f9fa;
+}
+
+.yellow{
+  background-color: yellow;
+}
+
+.text_center{
+  text-align: center;
+}
+
+.bleu_royal_tresclair{
+  background-color: #426aa7;
+}
+
+.bleu_royal_clair{
+  background-color: #344e75;
+}
+
+
+.style_dropdown_sizebar{
+  height: 40px;
+  padding-left: 15px;
+}
+
+.table{
+  margin-bottom: 0px;
+}
+
+.bas_rectangle{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #344e75;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  color: white;
+}
+
+.no_padding{
+  padding: 0px;
+}
+
+.no_margin{
+  margin: 0px;
+}
+
+.margin_top_vingt{
+  margin-top: 20px
+}
+
+.margin_bottom_vingt{
+  margin-bottom: 20px;
+}
+
+.margin_bottom_quarante{
+  margin-bottom: 40px;
+}
+
+.margin_top_quarante{
+  margin-top: 40px;
+}
+
+.navbar-default .navbar-nav>li>a{
+  color: white;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+  color: white;
+}
+
+.navbar-default .navbar-brand{
+  color: white;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover{
+  color: white;
+}
+
+tr:hover{
+  -moz-box-shadow: 0px 0px 17px 0px #cfcfcf;
+  -webkit-box-shadow: 0px 0px 17px 0px #cfcfcf;
+  -o-box-shadow: 0px 0px 17px 0px #cfcfcf;
+  box-shadow: 0px 0px 17px 0px #cfcfcf;
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=#cfcfcf, Direction=NaN, Strength=17);
+}
