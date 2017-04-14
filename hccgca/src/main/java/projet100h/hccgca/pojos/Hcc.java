@@ -5,6 +5,10 @@ public class Hcc {
 	private String titreHcc;
 	private String texteHcc;
 	
+	public Hcc() {
+		
+	}
+	
 	public Hcc(String titreHcc, String texteHcc) {
 		super();
 		this.titreHcc = titreHcc;
