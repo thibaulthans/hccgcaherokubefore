@@ -13,7 +13,7 @@ public class DataSourceProvider {
 			dataSource = new MysqlDataSource();
 			dataSource.setServerName("localhost");
 			dataSource.setPort(3306);
-			dataSource.setDatabaseName("root");
+			dataSource.setDatabaseName("hccgca");
 			dataSource.setUser("root");
 			dataSource.setPassword("desaegher");
 		}
