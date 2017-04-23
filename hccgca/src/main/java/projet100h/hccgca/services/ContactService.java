@@ -23,6 +23,9 @@ public class ContactService {
 		return contactDao.saveContact(contact);
 	}
 	
+	public void deleteContact(Contact contact){
+		contactDao.deleteContact(contact);
+}
 	
 
 }

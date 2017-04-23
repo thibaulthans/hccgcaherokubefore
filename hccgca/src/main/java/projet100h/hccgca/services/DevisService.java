@@ -23,6 +23,10 @@ public class DevisService {
 		return devisDao.saveDevis(devis);
 	}
 	
+	public void deleteDevis(Devis devis){
+		devisDao.deleteDevis(devis);
+}
+ 
 	
 
 }

@@ -19,19 +19,16 @@ private HccDao hccDao = new HccDao();
 	private HccService() {
 	}
 	
-	public Hcc saveNewHcc(String titreHcc, String texteHcc) {
-		Hcc hcc = hccDao.getHccByTitre(titreHcc);
+	public Hcc saveNewHcc(Hcc hcc) {
 		return hccDao.addHcc(hcc);
 	}
 	
-	public void deleteHcc(String titreHcc) {
-		Hcc hcc = hccDao.getHccByTitre(titreHcc);
+	public void deleteHcc(Hcc hcc) {
 		hccDao.deleteHcc(hcc);
 	}
 	
-	public Hcc saveUpdatedHcc(String titreHcc, String texteHcc) {
-		Hcc hcc = hccDao.getHccByTitre(titreHcc);
-		return hccDao.updateHcc(hcc);
+	public void saveUpdatedHcc(String idHcc, String titreHcc, String texteHcc) {
+		hccDao.updateHcc(idHcc, titreHcc, texteHcc);
 	}
 	
 }

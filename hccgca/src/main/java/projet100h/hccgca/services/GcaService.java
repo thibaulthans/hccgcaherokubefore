@@ -19,19 +19,16 @@ private GcaDao gcaDao = new GcaDao();
 	private GcaService() {
 	}
 	
-	public Gca saveNewGca(String titreGca, String texteGca) {
-		Gca gca = gcaDao.getGcaByTitre(titreGca);
+	public Gca saveNewGca(Gca gca) {
 		return gcaDao.addGca(gca);
 	}
 	
-	public void deleteGca(String titreGca) {
-		Gca gca = gcaDao.getGcaByTitre(titreGca);
+	public void deleteGca(Gca gca) {
 		gcaDao.deleteGca(gca);
 	}
 	
-	public Gca saveUpdatedGca(String titreGca, String texteGca) {
-		Gca gca = gcaDao.getGcaByTitre(titreGca);
-		return gcaDao.updateGca(gca);
+	public void saveUpdatedGca(String idGca, String titreGca, String texteGca) {
+		gcaDao.updateGca(idGca, titreGca, texteGca);
 	}
 	
 }
