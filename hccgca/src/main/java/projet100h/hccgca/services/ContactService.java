@@ -1,5 +1,7 @@
 package projet100h.hccgca.services;
 
+import java.util.List;
+
 import projet100h.hccgca.daos.ContactDao;
 import projet100h.hccgca.pojos.Contact;
 
@@ -19,13 +21,20 @@ public class ContactService {
 	private ContactService() {
 	}
 	
-	public Contact saveContact(Contact contact) {
-		return contactDao.saveContact(contact);
+	public Contact saveNewContact(String idContact, String nom, String mail, String objet, String message) {
+		return contactDao.saveNewContact(idContact, nom, mail, objet, message);
 	}
 	
-	public void deleteContact(Contact contact){
-		contactDao.deleteContact(contact);
-}
+	public void deleteContact(String idContact){
+		contactDao.deleteContact(idContact);
+	}
 	
+	public List<Contact> listContact() {
+		return contactDao.listContacts();
+	}
+
+	public Contact getContactById(String id) {
+		return contactDao.getContactById(id);
+	}
 
 }

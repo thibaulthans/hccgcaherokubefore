@@ -1,5 +1,7 @@
 package projet100h.hccgca.services;
 
+import java.util.List;
+
 import projet100h.hccgca.daos.HccDao;
 import projet100h.hccgca.pojos.Hcc;
 
@@ -19,16 +21,25 @@ private HccDao hccDao = new HccDao();
 	private HccService() {
 	}
 	
-	public Hcc saveNewHcc(Hcc hcc) {
-		return hccDao.addHcc(hcc);
+	public Hcc saveNewHcc(String titreHcc, String texteHcc) {
+		return hccDao.addHcc(titreHcc, texteHcc);
 	}
 	
-	public void deleteHcc(Hcc hcc) {
-		hccDao.deleteHcc(hcc);
+	public void deleteHcc(String idHcc) {
+		hccDao.deleteHcc(idHcc);
 	}
 	
 	public void saveUpdatedHcc(String idHcc, String titreHcc, String texteHcc) {
 		hccDao.updateHcc(idHcc, titreHcc, texteHcc);
 	}
+	
+	public List<Hcc> listHcc() {
+		return hccDao.listHcc();
+	}
+
+	public Hcc getHccById(String id) {
+		return hccDao.getHccById(id);
+	}
+
 	
 }
