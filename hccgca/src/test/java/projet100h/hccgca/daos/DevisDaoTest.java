@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 
 import org.assertj.core.api.Assertions;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,39 +32,60 @@ public class DevisDaoTest {
 		// GIVEN
 		Devis devisToAdd = new Devis("3","Communication","entre 500k et 1M","10 à 20", "Comptable", 150,"Dupont","Richard","RichardDupont@hotmail.fr","Message de Test 3");
 		// WHEN
-		Devis devisAdded = devisDao.saveDevis(devisToAdd);
+		Devis devisAdded = devisDao.saveNewDevis(devisToAdd.getIdDevis(), devisToAdd.getSecteurActivite(), devisToAdd.getChiffreAffaire(), devisToAdd.getNbSalarie(), devisToAdd.getMissions(), devisToAdd.getValeurFacture(), devisToAdd.getNom(), devisToAdd.getPrenom(), devisToAdd.getMail(), devisToAdd.getInformationsSupplementaires());
 		// THEN
 		Assertions.assertThat(devisAdded).isNotNull();
-		Assertions.assertThat(devisAdded.getMissions()).isEqualTo("Comptable");
+		Assertions.assertThat(devisAdded.getSecteurActivite()).isEqualTo("Communication");
 		
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
-				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM devis WHERE missions = ?")) {
-			stmt.setString(1,devisAdded.getMissions());
-			try (ResultSet rs = stmt.executeQuery()) {
+				Statement stmt = connection.createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * FROM devis WHERE nom='Dupont'")) {
 				assertThat(rs.next()).isTrue();
-				assertThat(rs.getString("prenom")).isEqualTo("Hugo");
+				
 			}
 		}
 	
 
-	}
 	
 	@Test
 	public void shouldDeleteDevis() throws Exception {
 		// GIVEN
-		Devis devis = devisDao.getDevisById("2");
+		Devis devis = devisDao.getDevisById("1");
 		// WHEN
-		devisDao.deleteDevis(devis);
+		devisDao.deleteDevis(devis.getIdDevis());
 		// THEN
 		try (
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM devis WHERE idDevis = ?")) {
-			stmt.setString(1, "2");
+			stmt.setString(1, "1");
 			try (ResultSet rs = stmt.executeQuery()) {
 				assertThat(rs.next()).isFalse();
 				
 			}
 		}
 		
-}
+	}
+	
+	@Test
+	public void shouldListDevis() throws Exception {
+		// WHEN
+		List<Devis> listDevis = devisDao.listDevis(); 
+		// THEN1
+		Assertions.assertThat(listDevis).isNotNull();
+		Assertions.assertThat(listDevis.get(0).getNom()).isEqualTo("Desaegher");
+		Assertions.assertThat(listDevis.get(1).getNbSalarie()).isEqualTo("supérieur à 50");
+		
+	}
+	
+	@Test
+	public void shouldGetDevis() throws Exception {
+		// WHEN
+		Devis devis = devisDao.getDevisById("1"); 
+		// THEN
+		Assertions.assertThat(devis).isNotNull();
+		Assertions.assertThat(devis.getIdDevis()).isEqualTo("1");
+		Assertions.assertThat(devis.getChiffreAffaire()).isEqualTo("inférieur 200k");
+		
+	}
+	
 }

@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
@@ -33,29 +34,25 @@ public class ContactDaoTest {
 		// GIVEN
 		Contact contactToAdd = new Contact("3","maxime leader de mon cul","ms@gmail.com","Info","Message de Test 3");
 		// WHEN
-		Contact contactAdded = contactDao.saveContact(contactToAdd);
+		Contact contactAdded = contactDao.saveNewContact(contactToAdd.getIdContact(), contactToAdd.getNom(), contactToAdd.getMail(), contactToAdd.getObjet(), contactToAdd.getMessage());
 		// THEN
 		Assertions.assertThat(contactAdded).isNotNull();
 		Assertions.assertThat(contactAdded.getNom()).isEqualTo("maxime leader de mon cul");
 		
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
-				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM contact WHERE nom = ?")) {
-			stmt.setString(1,contactAdded.getNom());
-			try (ResultSet rs = stmt.executeQuery()) {
-				//assertThat(rs.next()).isTrue();
-				//assertThat(rs.getString("mail")).isEqualTo("desaegher.hugo@hotmail.fr");
+					Statement stmt = connection.createStatement();
+					ResultSet rs = stmt.executeQuery("SELECT * FROM contact WHERE nom='Desaegher hugo'")) {
+					assertThat(rs.next()).isTrue();
 			}
 		}
-	
 
-	}
 	
 	@Test
 	public void shouldDeleteContact() throws Exception {
 		// GIVEN
 		Contact contact = contactDao.getContactById("1");
 		// WHEN
-		contactDao.deleteContact(contact);
+		contactDao.deleteContact(contact.getIdContact());
 		// THEN
 		try (
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -68,6 +65,28 @@ public class ContactDaoTest {
 		}
 		
 }
+	
+	@Test
+	public void shouldListContact() throws Exception {
+		// WHEN
+		List<Contact> listContacts = contactDao.listContacts(); 
+		// THEN1
+		Assertions.assertThat(listContacts).isNotNull();
+		Assertions.assertThat(listContacts.get(0).getNom()).isEqualTo("Desaegher hugo");
+		Assertions.assertThat(listContacts.get(1).getObjet()).isEqualTo("Demande info recrutement");
+		
+	}
+	
+	@Test
+	public void shouldGetContact() throws Exception {
+		// WHEN
+		Contact contact = contactDao.getContactById("1"); 
+		// THEN
+		Assertions.assertThat(contact).isNotNull();
+		Assertions.assertThat(contact.getIdContact()).isEqualTo("1");
+		Assertions.assertThat(contact.getMessage()).isEqualTo("Message de Test 1");
+		
+	}
 	
 	
 	
