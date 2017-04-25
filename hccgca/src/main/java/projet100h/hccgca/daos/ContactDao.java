@@ -5,36 +5,40 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import projet100h.hccgca.pojos.Contact;
 
 
 public class ContactDao {
 	
-public Contact saveContact(Contact contact){
+public Contact saveNewContact(String idContact, String nom, String mail, String objet, String message){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			
 			PreparedStatement stmt = connection.prepareStatement("INSERT INTO contact(idContact, nom, mail, objet, message) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1,contact.getIdContact());
-			stmt.setString(2,contact.getNom());
-			stmt.setString(3,contact.getMail());
-			stmt.setString(4,contact.getObjet());
-			stmt.setString(5,contact.getMessage());
+			stmt.setString(1, idContact);
+			stmt.setString(2, nom);
+			stmt.setString(3, mail);
+			stmt.setString(4, objet);
+			stmt.setString(5, message);
 			stmt.close();
 			connection.close();
+			
+			return new Contact(idContact, nom, mail, objet, message);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return contact;
+		return null;
 	}
 
-public void deleteContact(Contact contact){
+public void deleteContact(String idContact){
 	try {
 		Connection connection = DataSourceProvider.getDataSource().getConnection();
 		
 		PreparedStatement stmt = connection.prepareStatement("DELETE FROM contact WHERE idContact=?");
-		stmt.setString(1, contact.getIdContact());
+		stmt.setString(1, idContact);
 		stmt.executeUpdate();
 		stmt.close();
 		connection.close();
@@ -62,5 +66,22 @@ public Contact getContactById(String idContact) {
 	return contact;
 }
 
+public List<Contact> listContacts() {
+	ArrayList<Contact> lstcontact = new ArrayList<>();
+	try (
+		Connection connection = DataSourceProvider.getDataSource().getConnection();
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM contact")){
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			 lstcontact.add(new Contact(rs.getString("idContact"), rs.getString("nom"), rs.getString("mail"), rs.getString("objet"), rs.getString("message")));
+		}
+		rs.close();
+		stmt.close();
+		connection.close();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return lstcontact;
+}
 
 }
