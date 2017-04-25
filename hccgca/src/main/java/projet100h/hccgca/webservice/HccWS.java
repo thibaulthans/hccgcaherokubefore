@@ -1,15 +1,17 @@
 package projet100h.hccgca.webservice;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import projet100h.hccgca.pojos.Hcc;
 import projet100h.hccgca.services.HccService;
 
 @Path("/hcc")
@@ -21,12 +23,10 @@ public class HccWS {
 	
 	@POST
 	@Path("")
-	public Response addHcc(@FormParam("idHcc") String idHcc, @FormParam("titreHcc") String titreHcc, @FormParam("texteHcc") String texteHcc){
+	public Response addHcc(@FormParam("titreHcc") String titreHcc, @FormParam("texteHcc") String texteHcc){
 		HccService hccService = HccService.getInstance();
-		Hcc hcc = new Hcc(idHcc, titreHcc, texteHcc);
 		try {
-			hccService.saveNewHcc(hcc);
-			return Response.status(200).entity(gson.toJson("")).build();
+			return Response.status(200).entity(gson.toJson(hccService.saveNewHcc(titreHcc, texteHcc))).build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,13 +35,12 @@ public class HccWS {
 	}
 	
 	
-	@POST
+	@DELETE
 	@Path("")
-	public Response deleteHcc(@FormParam("idHcc") String idHcc, @FormParam("titreHcc") String titreHcc, @FormParam("texteHcc") String texteHcc){
+	public Response deleteHcc(@FormParam("idHcc") String idHcc){
 		HccService hccService = HccService.getInstance();
-		Hcc hcc = new Hcc(idHcc, titreHcc, texteHcc);
 		try {
-			 hccService.deleteHcc(hcc);
+			 hccService.deleteHcc(idHcc);
 			return Response.status(200).entity(gson.toJson("")).build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -63,6 +62,35 @@ public class HccWS {
 		}
 		return null;
 }
+	
+	@GET
+	@Path("/listhcc")
+	public Response listHcc(){
+		HccService hccService = HccService.getInstance();
+		try {
+			return Response.status(200).entity(gson.toJson(hccService.listHcc())).build();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+}
+	
+	@GET
+	@Path("/hcc/{idHcc}")
+	public Response getHccById(@PathParam("idHcc") String idHcc){
+		HccService hccService = HccService.getInstance();
+	
+		try {
+			return Response.status(200).entity(gson.toJson(hccService.getHccById(idHcc))).build();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+}
+	
+	
 
 	
 }

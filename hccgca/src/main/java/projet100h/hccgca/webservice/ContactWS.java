@@ -1,14 +1,16 @@
 package projet100h.hccgca.webservice;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import projet100h.hccgca.pojos.Contact;
 import projet100h.hccgca.services.ContactService;
 
 @Path("/contact")
@@ -22,10 +24,8 @@ public class ContactWS {
 	@Path("")
 	public Response addContact(@FormParam("idContact") String idContact, @FormParam("nom") String nom, @FormParam("mail") String mail,@FormParam("objet") String objet, @FormParam("message") String message){
 		ContactService contactService = ContactService.getInstance();
-		Contact contact = new Contact(idContact, nom, mail, objet, message);
 		try {
-			contactService.saveContact(contact);
-			return Response.status(200).entity(gson.toJson("")).build();
+			return Response.status(200).entity(gson.toJson(contactService.saveNewContact(idContact, nom, mail, objet, message))).build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,14 +34,40 @@ public class ContactWS {
 	}
 	
 	
-	@POST
+	@DELETE
 	@Path("")
 	public Response deleteContact(@FormParam("idContact") String idContact, @FormParam("nom") String nom, @FormParam("mail") String mail,@FormParam("objet") String objet, @FormParam("message") String message){
 		ContactService contactService = ContactService.getInstance();
-		Contact contact = new Contact(idContact, nom, mail, objet, message);
 		try {
-			 contactService.deleteContact(contact);
+			 contactService.deleteContact(idContact);
 			return Response.status(200).entity(gson.toJson("")).build();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@GET
+	@Path("/listcontact")
+	public Response listContact(){
+		ContactService contactService = ContactService.getInstance();
+		try {
+			return Response.status(200).entity(gson.toJson(contactService.listContact())).build();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@GET
+	@Path("/contact/{idContact}")
+	public Response getContactById(@PathParam("idContact") String idContact){
+		ContactService contactService = ContactService.getInstance();
+	
+		try {
+			return Response.status(200).entity(gson.toJson(contactService.getContactById(idContact))).build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
