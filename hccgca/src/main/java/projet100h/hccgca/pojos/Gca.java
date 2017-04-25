@@ -10,6 +10,12 @@ public class Gca {
 		
 	}
 	
+	public Gca(String titreGca, String texteGca) {
+		super();
+		this.titreGca = titreGca;
+		this.texteGca = texteGca;
+	}
+	
 	public Gca(String idGca, String titreGca, String texteGca) {
 		super();
 		this.idGca = idGca;
@@ -21,11 +27,11 @@ public class Gca {
 	public String getIdGca() {
 		return idGca;
 	}
-	
+
 	public void setIdGca(String idGca) {
 		this.idGca = idGca;
 	}
-	
+
 	public String getTitreGca() {
 		return titreGca;
 	}
