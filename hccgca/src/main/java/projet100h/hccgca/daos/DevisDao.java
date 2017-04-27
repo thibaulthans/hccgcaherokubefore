@@ -13,11 +13,11 @@ import projet100h.hccgca.pojos.Devis;
 
 public class DevisDao {
 	
-public Devis saveNewDevis(String idDevis, String secteurActivite, String chiffreAffaire, String nbSalarie, String missions, int valeurFacture, String nom, String prenom, String mail, String informationsSupplementaires){
+public Devis saveNewDevis(String idDevis, String secteurActivite, String chiffreAffaire, String nbSalarie, String missions, int valeurFacture, String nom, String prenom, String mail, String informationsSupplementaires, String dateDevis){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO devis(idDevis, secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires) VALUES(?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO devis(idDevis, secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis) VALUES(?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, idDevis);
 			stmt.setString(2, secteurActivite);
 			stmt.setString(3, chiffreAffaire);
@@ -28,11 +28,12 @@ public Devis saveNewDevis(String idDevis, String secteurActivite, String chiffre
 			stmt.setString(8, prenom);
 			stmt.setString(9, mail);
 			stmt.setString(10, informationsSupplementaires);
+			stmt.setString(11, dateDevis);
 			stmt.executeUpdate();
 			stmt.close();
 			connection.close();
 			
-			return new Devis(idDevis, secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires);
+			return new Devis(idDevis, secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -62,7 +63,7 @@ public Devis getDevisById(String idDevis) {
 			ResultSet rs = stmt.executeQuery();
 		if (rs.next()) {
 			 devis = new Devis(rs.getString("idDevis"), rs.getString("secteurActivite"), rs.getString("chiffreAffaire"), rs.getString("nbSalarie"), rs.getString("missions"),
-						rs.getInt("valeurFacture"), rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), rs.getString("informationsSupplementaires"));
+						rs.getInt("valeurFacture"), rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), rs.getString("informationsSupplementaires"), rs.getString("dateDevis"));
 		}
 		rs.close();
 		stmt.close();
@@ -81,7 +82,7 @@ public List<Devis> listDevis() {
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
 			 lstdevis.add(new Devis(rs.getString("idDevis"), rs.getString("secteurActivite"), rs.getString("chiffreAffaire"), rs.getString("nbSalarie"), rs.getString("missions"),
-					 rs.getInt("valeurFacture"), rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), rs.getString("informationsSupplementaires")));
+					 rs.getInt("valeurFacture"), rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), rs.getString("informationsSupplementaires"), rs.getString("dateDevis")));
 		}
 		rs.close();
 		stmt.close();

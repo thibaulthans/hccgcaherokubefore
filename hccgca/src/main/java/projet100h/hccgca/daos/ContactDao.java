@@ -13,20 +13,22 @@ import projet100h.hccgca.pojos.Contact;
 
 public class ContactDao {
 	
-public Contact saveNewContact(String idContact, String nom, String mail, String objet, String message){
+public Contact saveNewContact(String idContact, String nom, String mail, String objet, String message, String dateContact){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO contact(idContact, nom, mail, objet, message) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO contact(idContact, nom, mail, objet, message, dateContact) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, idContact);
 			stmt.setString(2, nom);
 			stmt.setString(3, mail);
 			stmt.setString(4, objet);
 			stmt.setString(5, message);
+			stmt.setString(6, dateContact);
+			stmt.executeUpdate();
 			stmt.close();
 			connection.close();
 			
-			return new Contact(idContact, nom, mail, objet, message);
+			return new Contact(idContact, nom, mail, objet, message, dateContact);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -55,7 +57,7 @@ public Contact getContactById(String idContact) {
 			stmt.setString(1, idContact);
 			ResultSet rs = stmt.executeQuery();
 		if (rs.next()) {
-			 contact = new Contact(rs.getString("idContact"), rs.getString("nom"), rs.getString("mail"), rs.getString("objet"), rs.getString("message"));
+			 contact = new Contact(rs.getString("idContact"), rs.getString("nom"), rs.getString("mail"), rs.getString("objet"), rs.getString("message"), rs.getString("dateContact"));
 		}
 		rs.close();
 		stmt.close();
@@ -73,7 +75,7 @@ public List<Contact> listContacts() {
 		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM contact")){
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
-			 lstcontact.add(new Contact(rs.getString("idContact"), rs.getString("nom"), rs.getString("mail"), rs.getString("objet"), rs.getString("message")));
+			 lstcontact.add(new Contact(rs.getString("idContact"), rs.getString("nom"), rs.getString("mail"), rs.getString("objet"), rs.getString("message"), rs.getString("dateContact")));
 		}
 		rs.close();
 		stmt.close();
