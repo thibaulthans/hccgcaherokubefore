@@ -7,15 +7,17 @@ public class Contact {
 	private String mail;
 	private String objet;
 	private String message;
+	private String dateContact;
 	
 	
-	public Contact(String idContact, String nom, String mail, String objet, String message) {
+	public Contact(String idContact, String nom, String mail, String objet, String message, String dateContact) {
 		super();
 		this.idContact = idContact;
 		this.nom = nom;
 		this.mail = mail;
 		this.objet = objet;
 		this.message = message;
+		this.dateContact = dateContact;
 	}
 	
 	public String getIdContact() {
@@ -49,6 +51,14 @@ public class Contact {
 	}
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getDateContact() {
+		return dateContact;
+	}
+
+	public void setDateContact(String dateContact) {
+		this.dateContact = dateContact;
 	}
 
 	

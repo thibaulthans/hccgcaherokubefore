@@ -12,11 +12,12 @@ public class Devis {
 	private String prenom;
 	private String mail;
 	private String informationsSupplementaires;
+	private String dateDevis;
 
 
 
 public Devis(String idDevis, String secteurActivite, String chiffreAffaire, String nbSalarie, String missions, int valeurFacture,
-		String nom, String prenom, String mail, String informationsSupplementaires) {
+		String nom, String prenom, String mail, String informationsSupplementaires, String dateDevis) {
 	super();
 	this.idDevis = idDevis;
 	this.secteurActivite = secteurActivite;
@@ -28,6 +29,7 @@ public Devis(String idDevis, String secteurActivite, String chiffreAffaire, Stri
 	this.prenom = prenom;
 	this.mail = mail;
 	this.informationsSupplementaires = informationsSupplementaires;
+	this.dateDevis = dateDevis;
 }
 
 public String getIdDevis() {
@@ -142,6 +144,14 @@ public String getInformationsSupplementaires() {
 
 public void setInformationsSupplementaires(String informationsSupplementaires) {
 	this.informationsSupplementaires = informationsSupplementaires;
+}
+
+public String getDateDevis() {
+	return dateDevis;
+}
+
+public void setDateDevis(String dateDevis) {
+	this.dateDevis = dateDevis;
 }
 
 }
