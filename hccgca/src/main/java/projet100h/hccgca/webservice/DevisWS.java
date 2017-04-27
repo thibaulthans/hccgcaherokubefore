@@ -22,10 +22,10 @@ public class DevisWS {
 	
 	@POST
 	@Path("")
-	public Response addDevis(@FormParam("idDevis") String idDevis, @FormParam("secteurActivite") String secteurActivite, @FormParam("chiffreAffaire") String chiffreAffaire, @FormParam("nbSalarie") String nbSalarie, @FormParam("missions") String missions, @FormParam("valeurFacture") int valeurFacture, @FormParam("nom") String nom, @FormParam("prenom") String prenom, @FormParam("mail") String mail, @FormParam("informationsSupplementaires") String informationsSupplementaires){
+	public Response addDevis(@FormParam("idDevis") String idDevis, @FormParam("secteurActivite") String secteurActivite, @FormParam("chiffreAffaire") String chiffreAffaire, @FormParam("nbSalarie") String nbSalarie, @FormParam("missions") String missions, @FormParam("valeurFacture") int valeurFacture, @FormParam("nom") String nom, @FormParam("prenom") String prenom, @FormParam("mail") String mail, @FormParam("informationsSupplementaires") String informationsSupplementaires, @FormParam("dateDevis") String dateDevis){
 		DevisService devisService = DevisService.getInstance();
 		try {
-			return Response.status(200).entity(gson.toJson(devisService.saveNewDevis(idDevis, secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires))).build();
+			return Response.status(200).entity(gson.toJson(devisService.saveNewDevis(idDevis, secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis))).build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
