@@ -21,8 +21,8 @@ public class DevisService {
 	private DevisService() {
 	}
 	
-	public Devis saveNewDevis(String idDevis, String secteurActivite, String chiffreAffaire, String nbSalarie, String missions, int valeurFacture, String nom, String prenom, String mail, String informationsSupplementaires) {
-		return devisDao.saveNewDevis(idDevis, secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires);
+	public Devis saveNewDevis(String idDevis, String secteurActivite, String chiffreAffaire, String nbSalarie, String missions, int valeurFacture, String nom, String prenom, String mail, String informationsSupplementaires, String dateDevis) {
+		return devisDao.saveNewDevis(idDevis, secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis);
 	}
 	
 	public void deleteDevis(String idDevis){

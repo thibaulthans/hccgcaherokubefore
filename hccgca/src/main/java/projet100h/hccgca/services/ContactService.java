@@ -21,8 +21,8 @@ public class ContactService {
 	private ContactService() {
 	}
 	
-	public Contact saveNewContact(String idContact, String nom, String mail, String objet, String message) {
-		return contactDao.saveNewContact(idContact, nom, mail, objet, message);
+	public Contact saveNewContact(String idContact, String nom, String mail, String objet, String message, String dateContact) {
+		return contactDao.saveNewContact(idContact, nom, mail, objet, message, dateContact);
 	}
 	
 	public void deleteContact(String idContact){
