@@ -24,15 +24,15 @@ public Contact saveNewContact(String idContact, String nom, String mail, String 
 			stmt.setString(4, objet);
 			stmt.setString(5, message);
 			stmt.setString(6, dateContact);
-			stmt.executeUpdate();
-			stmt.close();
-			connection.close();
+			stmt.executeUpdate(); 
 			
 			return new Contact(idContact, nom, mail, objet, message, dateContact);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return null;
+		
 	}
 
 public void deleteContact(String idContact){
