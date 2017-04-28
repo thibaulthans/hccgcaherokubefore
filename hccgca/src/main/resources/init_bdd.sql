@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `recrutement`;
 CREATE TABLE `recrutement` 
 (
-	`idRecrutement`  VARCHAR(10) NOT NULL,
+	`idRecrutement`  VARCHAR(10) INT NOT NULL AUTO_INCREMENT,
 	`prenom`  VARCHAR(100) NOT NULL,
 	`nom` VARCHAR(100) NOT NULL,
     `mail`  VARCHAR(100) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE `recrutement`
 DROP TABLE IF EXISTS `devis`;
 CREATE TABLE `devis` 
 (
-	`idDevis`  VARCHAR(10) NOT NULL,
+	`idDevis`  VARCHAR(10) INT NOT NULL AUTO_INCREMENT,
 	`secteurActivite`  VARCHAR(100) NOT NULL,
 	`chiffreAffaire` VARCHAR(100) NOT NULL,
     `nbSalarie`  VARCHAR(100) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `devis`
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE `contact` 
 (
-	`idContact`  VARCHAR(10) NOT NULL,
+	`idContact`  INT NOT NULL AUTO_INCREMENT,
 	`nom` VARCHAR(100) NOT NULL,
     `mail`  VARCHAR(100) NOT NULL,
 	`objet` VARCHAR(100) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE `contact`
 DROP TABLE IF EXISTS `hcc`;
 CREATE TABLE `hcc` 
 (
-	`idHcc`  VARCHAR(10) NOT NULL,
+	`idHcc`  VARCHAR(10) INT NOT NULL AUTO_INCREMENT,
 	`titreHcc` VARCHAR(100) NOT NULL,
     `texteHcc`  VARCHAR(2000) NOT NULL,
 	PRIMARY KEY (`idHcc`)
@@ -54,7 +54,7 @@ CREATE TABLE `hcc`
 DROP TABLE IF EXISTS `gca`;
 CREATE TABLE `gca` 
 (
-	`idGca`  VARCHAR(10) NOT NULL,
+	`idGca`  VARCHAR(10) INT NOT NULL AUTO_INCREMENT,
 	`titreGca` VARCHAR(100) NOT NULL,
     `texteGca`  VARCHAR(2000) NOT NULL,
 	PRIMARY KEY (`idGca`)
