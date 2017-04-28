@@ -30,7 +30,6 @@ public class DevisServlet extends AbstractGenericServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
 		// Les inputs sont bien récupérés
-		String idDevis =req.getParameter("idDevis");
         String secteurActivite =req.getParameter("inputSA");
         String chiffreAffaire =req.getParameter("inputCA");
         String nbSalarie =req.getParameter("inputNS");
@@ -42,7 +41,7 @@ public class DevisServlet extends AbstractGenericServlet{
         String informationsSupplementaires =req.getParameter("inputIS");
         String dateDevis =req.getParameter("dateContact");
         
-        DevisService.getInstance().saveNewDevis(idDevis, secteurActivite,chiffreAffaire,nbSalarie,missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis);
+        DevisService.getInstance().saveNewDevis(null, secteurActivite,chiffreAffaire,nbSalarie,missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis);
         
         resp.sendRedirect("devis");
 
