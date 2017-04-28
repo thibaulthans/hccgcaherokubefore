@@ -22,17 +22,17 @@ public class DevisDaoTest {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
 			Statement stmt = connection.createStatement()) {
 			stmt.executeUpdate("DELETE FROM devis");
-			stmt.executeUpdate("INSERT INTO `devis`(`idDevis`,`secteurActivite`,`chiffreAffaire`,`nbSalarie`,`missions`,`valeurFacture`,`nom`,`prenom`,`mail`,`informationsSupplementaires`) VALUES ('1','Droit','inférieur 200k','20 à 50', 'Comptable', 100,'Desaegher','Hugo', 'desaegher.hugo@hotmail.fr', 'Message de Test')");
-			stmt.executeUpdate("INSERT INTO `devis`(`idDevis`,`secteurActivite`,`chiffreAffaire`,`nbSalarie`,`missions`,`valeurFacture`,`nom`,`prenom`,`mail`,`informationsSupplementaires`) VALUES ('2','Immobilier','supérieur à 2M','supérieur à 50', 'social', 200,'Hans','Thibault', 'Hans.Thibault@gmail.com', 'Message de Test2')");
+			stmt.executeUpdate("INSERT INTO `devis`(`idDevis`,`secteurActivite`,`chiffreAffaire`,`nbSalarie`,`missions`,`valeurFacture`,`nom`,`prenom`,`mail`,`informationsSupplementaires`,`dateDevis`) VALUES ('1','Droit','inférieur 200k','20 à 50', 'Comptable', 100,'Desaegher','Hugo', 'desaegher.hugo@hotmail.fr', 'Message de Test', '26-04-2017')");
+			stmt.executeUpdate("INSERT INTO `devis`(`idDevis`,`secteurActivite`,`chiffreAffaire`,`nbSalarie`,`missions`,`valeurFacture`,`nom`,`prenom`,`mail`,`informationsSupplementaires`,`dateDevis`) VALUES ('2','Immobilier','supérieur à 2M','supérieur à 50', 'social', 200,'Hans','Thibault', 'Hans.Thibault@gmail.com', 'Message de Test2', '26-04-2017')");
 		}
 	}
 	
 	@Test
 	public void shouldSaveDevis() throws Exception {
 		// GIVEN
-		Devis devisToAdd = new Devis("3","Communication","entre 500k et 1M","10 à 20", "Comptable", 150,"Dupont","Richard","RichardDupont@hotmail.fr","Message de Test 3");
+		Devis devisToAdd = new Devis("3","Communication","entre 500k et 1M","10 à 20", "Comptable", 150,"Dupont","Richard","RichardDupont@hotmail.fr","Message de Test 3","26-04-2017");
 		// WHEN
-		Devis devisAdded = devisDao.saveNewDevis(devisToAdd.getIdDevis(), devisToAdd.getSecteurActivite(), devisToAdd.getChiffreAffaire(), devisToAdd.getNbSalarie(), devisToAdd.getMissions(), devisToAdd.getValeurFacture(), devisToAdd.getNom(), devisToAdd.getPrenom(), devisToAdd.getMail(), devisToAdd.getInformationsSupplementaires());
+		Devis devisAdded = devisDao.saveNewDevis(devisToAdd.getIdDevis(), devisToAdd.getSecteurActivite(), devisToAdd.getChiffreAffaire(), devisToAdd.getNbSalarie(), devisToAdd.getMissions(), devisToAdd.getValeurFacture(), devisToAdd.getNom(), devisToAdd.getPrenom(), devisToAdd.getMail(), devisToAdd.getInformationsSupplementaires(), devisToAdd.getDateDevis());
 		// THEN
 		Assertions.assertThat(devisAdded).isNotNull();
 		Assertions.assertThat(devisAdded.getSecteurActivite()).isEqualTo("Communication");
