@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `recrutement`;
 CREATE TABLE `recrutement` 
 (
-	`idRecrutement`  VARCHAR(10) INT NOT NULL AUTO_INCREMENT,
+	`idRecrutement` INT NOT NULL AUTO_INCREMENT,
 	`prenom`  VARCHAR(100) NOT NULL,
 	`nom` VARCHAR(100) NOT NULL,
     `mail`  VARCHAR(100) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE `recrutement`
 DROP TABLE IF EXISTS `devis`;
 CREATE TABLE `devis` 
 (
-	`idDevis`  VARCHAR(10) INT NOT NULL AUTO_INCREMENT,
+	`idDevis`  INT NOT NULL AUTO_INCREMENT,
 	`secteurActivite`  VARCHAR(100) NOT NULL,
 	`chiffreAffaire` VARCHAR(100) NOT NULL,
     `nbSalarie`  VARCHAR(100) NOT NULL,
