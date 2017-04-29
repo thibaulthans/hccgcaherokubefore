@@ -1,89 +1,65 @@
-package projet100h.hccgca.daos;
+package projet100h.hccgca.pojos;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+public class Contact {
 
-import projet100h.hccgca.pojos.Contact;
-
-
-public class ContactDao {
+	private Integer idContact;
+	private String nom;
+	private String mail;
+	private String objet;
+	private String message;
+	private String dateContact;
 	
-public Contact saveNewContact(String idContact, String nom, String mail, String objet, String message, String dateContact){
-		try {
-			Connection connection = DataSourceProvider.getDataSource().getConnection();
-			
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO contact(idContact, nom, mail, objet, message, dateContact) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, idContact);
-			stmt.setString(2, nom);
-			stmt.setString(3, mail);
-			stmt.setString(4, objet);
-			stmt.setString(5, message);
-			stmt.setString(6, dateContact);
-			stmt.executeUpdate(); 
-			
-			return new Contact(idContact, nom, mail, objet, message, dateContact);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return null;
-		
+	
+	public Contact(Integer idContact, String nom, String mail, String objet, String message, String dateContact) {
+		super();
+		this.idContact = idContact;
+		this.nom = nom;
+		this.mail = mail;
+		this.objet = objet;
+		this.message = message;
+		this.dateContact = dateContact;
+	}
+	
+	public Integer getIdContact() {
+		return idContact;
+	}
+	
+	public void setIdContact(Integer idContact) {
+		this.idContact = idContact;
 	}
 
-public void deleteContact(String idContact){
-	try {
-		Connection connection = DataSourceProvider.getDataSource().getConnection();
-		
-		PreparedStatement stmt = connection.prepareStatement("DELETE FROM contact WHERE idContact=?");
-		stmt.setString(1, idContact);
-		stmt.executeUpdate();
-		stmt.close();
-		connection.close();
-	} catch (SQLException e) {
-		e.printStackTrace();
+	public String getNom() {
+		return nom;
 	}
-}
-
-public Contact getContactById(String idContact) {
-	Contact contact = null;
-	try (
-		Connection connection = DataSourceProvider.getDataSource().getConnection();
-		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM contact WHERE idContact = ?")){
-			stmt.setString(1, idContact);
-			ResultSet rs = stmt.executeQuery();
-		if (rs.next()) {
-			 contact = new Contact(rs.getString("idContact"), rs.getString("nom"), rs.getString("mail"), rs.getString("objet"), rs.getString("message"), rs.getString("dateContact"));
-		}
-		rs.close();
-		stmt.close();
-		connection.close();
-	} catch (SQLException e) {
-		e.printStackTrace();
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
-	return contact;
-}
-
-public List<Contact> listContacts() {
-	ArrayList<Contact> lstcontact = new ArrayList<>();
-	try (
-		Connection connection = DataSourceProvider.getDataSource().getConnection();
-		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM contact")){
-		ResultSet rs = stmt.executeQuery();
-		while (rs.next()) {
-			 lstcontact.add(new Contact(rs.getString("idContact"), rs.getString("nom"), rs.getString("mail"), rs.getString("objet"), rs.getString("message"), rs.getString("dateContact")));
-		}
-		rs.close();
-		stmt.close();
-		connection.close();
-	} catch (SQLException e) {
-		e.printStackTrace();
+	public String getMail() {
+		return mail;
 	}
-	return lstcontact;
-}
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	public String getObjet() {
+		return objet;
+	}
+	public void setObjet(String objet) {
+		this.objet = objet;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
+	public String getDateContact() {
+		return dateContact;
+	}
+
+	public void setDateContact(String dateContact) {
+		this.dateContact = dateContact;
+	}
+
+	
 }
