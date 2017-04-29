@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <title>Back office</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link th:href="@{cssbackoffice/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{cssbackoffice/baseback.css}" rel="stylesheet">
+  <link th:href="@{cssbackoffice/connexion.css}" rel="stylesheet">
+</script>
+</head>
+
+<body class="style_body">
+
+  <div class="containeur">
+    <section>
+      <form name="formulaireconnexion" method="post">
+        <h4 class="center_horizontal">Connexion</h4>
+        <input type="text" class="form-control " name="identifiant" placeholder="Identifiant">
+        <input type="password" class="form-control" name="password" placeholder="Mot de passe">
+        <div class="row center_horizontal">
+          <div class="btn-group">
+              <button class="btn btn-primary button_pers_small center_horizontal" type="button">Envoyer</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+       <!-- Include all compiled plugins (below), or include individual files as needed -->
+       <script src="js/Chart.js"></script>
+       <script src="js/globaljs.js"></script>
+
+
+
+</body>
+</html>

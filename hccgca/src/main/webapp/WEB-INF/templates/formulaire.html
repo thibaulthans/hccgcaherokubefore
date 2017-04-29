@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <title>Back office</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/baseback.css" rel="stylesheet">
+  <link href="css/homeback.css" rel="stylesheet">
+</script>
+</head>
+
+<body class="style_body">
+
+<nav class="navbar navbar-default bleu_royal_clair">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="homeback.html">Back office</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="formulaire.html">Formulaire</a></li>
+        <li><a href="modification_ajouter.html">Modification</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+  <div class="col-md-offset-3 col-md-9 margin_top_vingt">
+    <form>
+    <div class="col-md-3">
+    <select required class="form-control">
+        <option value="" disabled selected hidden>Type formulaire</option>
+        <option value="0">Tout</option>
+        <option value="0">Contact rapide</option>
+        <option value="1">Devis</option>
+        <option value="0">Recrutement</option>
+    </select>
+    </div>
+
+    <div class="col-md-3">
+    <select required class="form-control">
+        <option value="" disabled selected hidden>Date</option>
+        <option value="0">Du plus récent</option>
+        <option value="1">Du plus vieux</option>
+    </select>
+    </div>
+
+    <div class="col-md-2">
+      <button type="button" class="btn btn-default">Rechercher</button>
+    </div>
+
+   </form>
+  </div>
+  </div>
+
+
+       <div class="row margin_bottom_quarante">
+       <div class="col-xs-offset-1 col-xs-10 no_padding grand_rectangle margin_top_vingt">
+         <table class="table table-striped">
+           <thead>
+             <tr>
+               <th>#</th>
+               <th>Type</th>
+               <th>Nom</th>
+               <th>Email</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr class="test" onclick="document.location = 'connexion.html';">
+               <th scope="row">1</th>
+               <td>Devis</td>
+               <td>Otto</td>
+               <td>@mdo</td>
+             </tr>
+             <tr>
+               <th scope="row">2</th>
+               <td>contact</td>
+               <td>Thornton</td>
+               <td>@fat</td>
+             </tr>
+             <tr>
+               <th scope="row">3</th>
+               <td>Recrutement</td>
+               <td>the Bird</td>
+               <td>@twitter</td>
+             </tr>
+             <tr>
+               <th scope="row">4</th>
+               <td>Devis</td>
+               <td>Otto</td>
+               <td>@mdo</td>
+             </tr>
+             <tr>
+               <th scope="row">5</th>
+               <td>contact</td>
+               <td>Thornton</td>
+               <td>@fat</td>
+             </tr>
+             <tr>
+               <th scope="row">6</th>
+               <td>Recrutement</td>
+               <td>the Bird</td>
+               <td>@twitter</td>
+             </tr>
+             <tr>
+               <th scope="row">7</th>
+               <td>Devis</td>
+               <td>Otto</td>
+               <td>@mdo</td>
+             </tr>
+             <tr>
+               <th scope="row">8</th>
+               <td>contact</td>
+               <td>Thornton</td>
+               <td>@fat</td>
+             </tr>
+             <tr>
+               <th scope="row">9</th>
+               <td>Recrutement</td>
+               <td>the Bird</td>
+               <td>@twitter</td>
+             </tr>
+             <tr>
+               <th scope="row">10</th>
+               <td>Devis</td>
+               <td>Otto</td>
+               <td>@mdo</td>
+             </tr>
+             <tr>
+               <th scope="row">11</th>
+               <td>contact</td>
+               <td>Thornton</td>
+               <td>@fat</td>
+             </tr>
+             <tr>
+               <th scope="row">12</th>
+               <td>Recrutement</td>
+               <td>the Bird</td>
+               <td>@twitter</td>
+             </tr>
+             <tr>
+               <th scope="row">13</th>
+               <td>Devis</td>
+               <td>Otto</td>
+               <td>@mdo</td>
+             </tr>
+             <tr>
+               <th scope="row">14</th>
+               <td>contact</td>
+               <td>Thornton</td>
+               <td>@fat</td>
+             </tr>
+             <tr>
+               <th scope="row">15</th>
+               <td>Recrutement</td>
+               <td>the Bird</td>
+               <td>@twitter</td>
+             </tr>
+           </tbody>
+         </table>
+         <p class="text_center no_margin bas_rectangle">
+              Formulaires
+         </p>
+       </div>
+
+    </div>
+
+
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+       <!-- Include all compiled plugins (below), or include individual files as needed -->
+       <script src="js/Chart.js"></script>
+       <script src="js/globaljs.js"></script>
+
+
+
+</body>
+</html>
