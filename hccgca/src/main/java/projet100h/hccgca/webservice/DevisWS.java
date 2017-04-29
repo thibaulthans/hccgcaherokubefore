@@ -22,7 +22,7 @@ public class DevisWS {
 	
 	@POST
 	@Path("")
-	public Response addDevis(@FormParam("idDevis") String idDevis, @FormParam("secteurActivite") String secteurActivite, @FormParam("chiffreAffaire") String chiffreAffaire, @FormParam("nbSalarie") String nbSalarie, @FormParam("missions") String missions, @FormParam("valeurFacture") int valeurFacture, @FormParam("nom") String nom, @FormParam("prenom") String prenom, @FormParam("mail") String mail, @FormParam("informationsSupplementaires") String informationsSupplementaires, @FormParam("dateDevis") String dateDevis){
+	public Response addDevis(@FormParam("idDevis") Integer idDevis, @FormParam("secteurActivite") String secteurActivite, @FormParam("chiffreAffaire") String chiffreAffaire, @FormParam("nbSalarie") String nbSalarie, @FormParam("missions") String missions, @FormParam("valeurFacture") int valeurFacture, @FormParam("nom") String nom, @FormParam("prenom") String prenom, @FormParam("mail") String mail, @FormParam("informationsSupplementaires") String informationsSupplementaires, @FormParam("dateDevis") String dateDevis){
 		DevisService devisService = DevisService.getInstance();
 		try {
 			return Response.status(200).entity(gson.toJson(devisService.saveNewDevis(idDevis, secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis))).build();
@@ -36,7 +36,7 @@ public class DevisWS {
 	
 	@DELETE
 	@Path("")
-	public Response deleteDevis(@FormParam("idDevis") String idDevis, @FormParam("secteurActivite") String secteurActivite, @FormParam("chiffreAffaire") String chiffreAffaire, @FormParam("nbSalarie") String nbSalarie, @FormParam("missions") String missions, @FormParam("valeurFacture") int valeurFacture, @FormParam("nom") String nom, @FormParam("prenom") String prenom, @FormParam("mail") String mail, @FormParam("informationsSupplementaires") String informationsSupplementaires){
+	public Response deleteDevis(@FormParam("idDevis") Integer idDevis, @FormParam("secteurActivite") String secteurActivite, @FormParam("chiffreAffaire") String chiffreAffaire, @FormParam("nbSalarie") String nbSalarie, @FormParam("missions") String missions, @FormParam("valeurFacture") int valeurFacture, @FormParam("nom") String nom, @FormParam("prenom") String prenom, @FormParam("mail") String mail, @FormParam("informationsSupplementaires") String informationsSupplementaires){
 		DevisService devisService = DevisService.getInstance();
 		try {
 			devisService.deleteDevis(idDevis);
@@ -63,7 +63,7 @@ public class DevisWS {
 	
 	@GET
 	@Path("/devis/{idDevis}")
-	public Response getHccById(@PathParam("idDevis") String idDevis){
+	public Response getHccById(@PathParam("idDevis") Integer idDevis){
 		DevisService devisService = DevisService.getInstance();
 	
 		try {

@@ -22,7 +22,7 @@ public class ContactWS {
 	
 	@POST
 	@Path("")
-	public Response addContact(@FormParam("idContact") String idContact, @FormParam("nom") String nom, @FormParam("mail") String mail,@FormParam("objet") String objet, @FormParam("message") String message, @FormParam("dateContact") String dateContact){
+	public Response addContact(@FormParam("idContact") int idContact, @FormParam("nom") String nom, @FormParam("mail") String mail,@FormParam("objet") String objet, @FormParam("message") String message, @FormParam("dateContact") String dateContact){
 		ContactService contactService = ContactService.getInstance();
 		try {
 			return Response.status(200).entity(gson.toJson(contactService.saveNewContact(idContact, nom, mail, objet, message, dateContact))).build();
@@ -36,7 +36,7 @@ public class ContactWS {
 	
 	@DELETE
 	@Path("")
-	public Response deleteContact(@FormParam("idContact") String idContact, @FormParam("nom") String nom, @FormParam("mail") String mail,@FormParam("objet") String objet, @FormParam("message") String message, @FormParam("contact") String dateContact){
+	public Response deleteContact(@FormParam("idContact") int idContact, @FormParam("nom") String nom, @FormParam("mail") String mail,@FormParam("objet") String objet, @FormParam("message") String message, @FormParam("contact") String dateContact){
 		ContactService contactService = ContactService.getInstance();
 		try {
 			 contactService.deleteContact(idContact);
@@ -63,7 +63,7 @@ public class ContactWS {
 	
 	@GET
 	@Path("/contact/{idContact}")
-	public Response getContactById(@PathParam("idContact") String idContact){
+	public Response getContactById(@PathParam("idContact") int idContact){
 		ContactService contactService = ContactService.getInstance();
 	
 		try {
