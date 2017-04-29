@@ -2,7 +2,7 @@ package projet100h.hccgca.pojos;
 
 public class Devis {
 
-	private String idDevis;
+	private Integer idDevis;
 	private String secteurActivite;
 	private String chiffreAffaire;
 	private String nbSalarie;
@@ -16,7 +16,7 @@ public class Devis {
 
 
 
-public Devis(String idDevis, String secteurActivite, String chiffreAffaire, String nbSalarie, String missions, int valeurFacture,
+public Devis(Integer idDevis, String secteurActivite, String chiffreAffaire, String nbSalarie, String missions, int valeurFacture,
 		String nom, String prenom, String mail, String informationsSupplementaires, String dateDevis) {
 	super();
 	this.idDevis = idDevis;
@@ -32,11 +32,11 @@ public Devis(String idDevis, String secteurActivite, String chiffreAffaire, Stri
 	this.dateDevis = dateDevis;
 }
 
-public String getIdDevis() {
+public Integer getIdDevis() {
 	return idDevis;
 }
 
-public void setIdDevis(String idDevis) {
+public void setIdDevis(Integer idDevis) {
 	this.idDevis = idDevis;
 }
 

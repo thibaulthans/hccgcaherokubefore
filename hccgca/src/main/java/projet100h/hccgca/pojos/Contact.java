@@ -2,7 +2,7 @@ package projet100h.hccgca.pojos;
 
 public class Contact {
 
-	private String idContact;
+	private Integer idContact;
 	private String nom;
 	private String mail;
 	private String objet;
@@ -10,7 +10,7 @@ public class Contact {
 	private String dateContact;
 	
 	
-	public Contact(String idContact, String nom, String mail, String objet, String message, String dateContact) {
+	public Contact(Integer idContact, String nom, String mail, String objet, String message, String dateContact) {
 		super();
 		this.idContact = idContact;
 		this.nom = nom;
@@ -20,11 +20,11 @@ public class Contact {
 		this.dateContact = dateContact;
 	}
 	
-	public String getIdContact() {
+	public Integer getIdContact() {
 		return idContact;
 	}
 	
-	public void setIdContact(String idContact) {
+	public void setIdContact(Integer idContact) {
 		this.idContact = idContact;
 	}
 
