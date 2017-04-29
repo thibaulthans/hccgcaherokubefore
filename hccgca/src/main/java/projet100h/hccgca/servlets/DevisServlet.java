@@ -1,6 +1,9 @@
 package projet100h.hccgca.servlets;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +19,7 @@ import projet100h.hccgca.services.DevisService;
 public class DevisServlet extends AbstractGenericServlet{
 
 	private static final long serialVersionUID = 1L;
+	private static final char[] secteurActivitebis = null;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,17 +34,21 @@ public class DevisServlet extends AbstractGenericServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
 		// Les inputs sont bien récupérés
-        String secteurActivite =req.getParameter("inputSA");
-        String chiffreAffaire =req.getParameter("inputCA");
-        String nbSalarie =req.getParameter("inputNS");
-        String missions =req.getParameter("inputMissions");
-        Integer valeurFacture =Integer.parseInt(req.getParameter("inputVF")); //pas sur du tout de cette ligne
-        String nom =req.getParameter("inputNom");
-        String prenom =req.getParameter("inputPrenom");
-        String mail =req.getParameter("inputMail");
-        String informationsSupplementaires =req.getParameter("inputIS");
-        String dateDevis =req.getParameter("dateContact");
-        
+        String secteurActivite =req.getParameter("select_secteur_activite");
+        System.out.println(secteurActivite);
+        String chiffreAffaire =req.getParameter("select_chiffre_affaire");
+        String nbSalarie =req.getParameter("select_nb_salarie");
+        String missions =req.getParameter("select_mission");
+        Integer valeurFacture = Integer.parseInt(req.getParameter("inputmontant")); 
+        String nom =req.getParameter("inputnom");
+        String prenom =req.getParameter("inputprenom");
+        String mail =req.getParameter("inputemail");
+        String informationsSupplementaires =req.getParameter("message");  
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+		Date date = new Date();
+		String dateDevis =dateFormat.format(date);
+		
+
         DevisService.getInstance().saveNewDevis(null, secteurActivite,chiffreAffaire,nbSalarie,missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis);
         
         resp.sendRedirect("devis");

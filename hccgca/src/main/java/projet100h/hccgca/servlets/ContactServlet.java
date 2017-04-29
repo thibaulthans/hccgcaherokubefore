@@ -45,6 +45,8 @@ public class ContactServlet extends AbstractGenericServlet{
 		String dateContact =dateFormat.format(date);
 		System.out.println(dateContact);
 		System.out.println("a");
+		
+		Integer a= null;
 
 	
         ContactService.getInstance().saveNewContact(null, nom,mail,objet,message, dateContact);
