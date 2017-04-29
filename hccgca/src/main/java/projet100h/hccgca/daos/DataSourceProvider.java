@@ -15,7 +15,7 @@ public class DataSourceProvider {
 			dataSource.setPort(3306);
 			dataSource.setDatabaseName("hccgca");
 			dataSource.setUser("root");
-			dataSource.setPassword("desaegher");
+			dataSource.setPassword("root");
 		}
 		return dataSource;
 	}

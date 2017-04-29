@@ -13,25 +13,22 @@ import projet100h.hccgca.pojos.Devis;
 
 public class DevisDao {
 	
-public Devis saveNewDevis(String idDevis, String secteurActivite, String chiffreAffaire, String nbSalarie, String missions, int valeurFacture, String nom, String prenom, String mail, String informationsSupplementaires, String dateDevis){
+public Devis saveNewDevis(Integer idDevis, String secteurActivite, String chiffreAffaire, String nbSalarie, String missions, int valeurFacture, String nom, String prenom, String mail, String informationsSupplementaires, String dateDevis){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO devis(idDevis, secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis) VALUES(?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, idDevis);
-			stmt.setString(2, secteurActivite);
-			stmt.setString(3, chiffreAffaire);
-			stmt.setString(4, nbSalarie);
-			stmt.setString(5, missions);
-			stmt.setInt(6, valeurFacture);
-			stmt.setString(7, nom);
-			stmt.setString(8, prenom);
-			stmt.setString(9, mail);
-			stmt.setString(10, informationsSupplementaires);
-			stmt.setString(11, dateDevis);
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO devis(secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis) VALUES(?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, secteurActivite);
+			stmt.setString(2, chiffreAffaire);
+			stmt.setString(3, nbSalarie);
+			stmt.setString(4, missions);
+			stmt.setInt(5, valeurFacture);
+			stmt.setString(6, nom);
+			stmt.setString(7, prenom);
+			stmt.setString(8, mail);
+			stmt.setString(9, informationsSupplementaires);
+			stmt.setString(10, dateDevis);
 			stmt.executeUpdate();
-			stmt.close();
-			connection.close();
 			
 			return new Devis(idDevis, secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis);
 		} catch (SQLException e) {
@@ -40,12 +37,12 @@ public Devis saveNewDevis(String idDevis, String secteurActivite, String chiffre
 		return null;
 	}
 
-public void deleteDevis(String idDevis){
+public void deleteDevis(Integer idDevis){
 	try {
 		Connection connection = DataSourceProvider.getDataSource().getConnection();
 		
 		PreparedStatement stmt = connection.prepareStatement("DELETE FROM devis WHERE idDevis=?");
-		stmt.setString(1, idDevis);
+		stmt.setInt(1, idDevis);
 		stmt.executeUpdate();
 		stmt.close();
 		connection.close();
@@ -54,15 +51,15 @@ public void deleteDevis(String idDevis){
 	}
 }
 
-public Devis getDevisById(String idDevis) {
+public Devis getDevisById(Integer idDevis) {
 	Devis devis = null;
 	try (
 		Connection connection = DataSourceProvider.getDataSource().getConnection();
 		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM devis WHERE idDevis = ?")){
-			stmt.setString(1, idDevis);
+			stmt.setInt(1, idDevis);
 			ResultSet rs = stmt.executeQuery();
 		if (rs.next()) {
-			 devis = new Devis(rs.getString("idDevis"), rs.getString("secteurActivite"), rs.getString("chiffreAffaire"), rs.getString("nbSalarie"), rs.getString("missions"),
+			 devis = new Devis(rs.getInt("idDevis"), rs.getString("secteurActivite"), rs.getString("chiffreAffaire"), rs.getString("nbSalarie"), rs.getString("missions"),
 						rs.getInt("valeurFacture"), rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), rs.getString("informationsSupplementaires"), rs.getString("dateDevis"));
 		}
 		rs.close();
@@ -81,7 +78,7 @@ public List<Devis> listDevis() {
 		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM devis")){
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
-			 lstdevis.add(new Devis(rs.getString("idDevis"), rs.getString("secteurActivite"), rs.getString("chiffreAffaire"), rs.getString("nbSalarie"), rs.getString("missions"),
+			 lstdevis.add(new Devis(rs.getInt("idDevis"), rs.getString("secteurActivite"), rs.getString("chiffreAffaire"), rs.getString("nbSalarie"), rs.getString("missions"),
 					 rs.getInt("valeurFacture"), rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), rs.getString("informationsSupplementaires"), rs.getString("dateDevis")));
 		}
 		rs.close();

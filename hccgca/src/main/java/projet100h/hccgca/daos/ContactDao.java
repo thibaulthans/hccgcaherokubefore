@@ -11,7 +11,7 @@ import java.util.List;
 import projet100h.hccgca.pojos.Contact;
 
 
-public class ContactDao {
+public class ContactDao { //test
 	
 public Contact saveNewContact(Integer idContact, String nom, String mail, String objet, String message, String dateContact){
 		try {
