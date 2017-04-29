@@ -21,11 +21,11 @@ public class DevisService {
 	private DevisService() {
 	}
 	
-	public Devis saveNewDevis(String idDevis, String secteurActivite, String chiffreAffaire, String nbSalarie, String missions, int valeurFacture, String nom, String prenom, String mail, String informationsSupplementaires, String dateDevis) {
+	public Devis saveNewDevis(Integer idDevis, String secteurActivite, String chiffreAffaire, String nbSalarie, String missions, int valeurFacture, String nom, String prenom, String mail, String informationsSupplementaires, String dateDevis) {
 		return devisDao.saveNewDevis(idDevis, secteurActivite, chiffreAffaire, nbSalarie, missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis);
 	}
 	
-	public void deleteDevis(String idDevis){
+	public void deleteDevis(Integer idDevis){
 		devisDao.deleteDevis(idDevis);
 	}
 	
@@ -33,7 +33,7 @@ public class DevisService {
 		return devisDao.listDevis();
 	}
 
-	public Devis getDevisById(String id) {
+	public Devis getDevisById(Integer id) {
 		return devisDao.getDevisById(id);
 	}
  

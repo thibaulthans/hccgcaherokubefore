@@ -21,11 +21,11 @@ public class ContactService {
 	private ContactService() {
 	}
 	
-	public Contact saveNewContact(String idContact, String nom, String mail, String objet, String message, String dateContact) {
+	public Contact saveNewContact(Integer idContact, String nom, String mail, String objet, String message, String dateContact) {
 		return contactDao.saveNewContact(idContact, nom, mail, objet, message, dateContact);
 	}
 	
-	public void deleteContact(String idContact){
+	public void deleteContact(Integer idContact){
 		contactDao.deleteContact(idContact);
 	}
 	
@@ -33,7 +33,7 @@ public class ContactService {
 		return contactDao.listContacts();
 	}
 
-	public Contact getContactById(String id) {
+	public Contact getContactById(Integer id) {
 		return contactDao.getContactById(id);
 	}
 
