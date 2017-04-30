@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import projet100h.hccgca.services.HccService;
+
 @WebServlet("/gca")
 public class GcaServlet extends AbstractGenericServlet{
 
@@ -22,6 +24,19 @@ public class GcaServlet extends AbstractGenericServlet{
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
 		templateEngine.process("gca", context, resp.getWriter());
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+        
+		// Les inputs sont bien récupérés
+		String titreGca =req.getParameter("titreGca");
+        String texteGca =req.getParameter("texteGca");
+
+        HccService.getInstance().addHcc(null, titreGca, texteGca);
+        
+        resp.sendRedirect("gca");
 	}
 
 	

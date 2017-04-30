@@ -2,6 +2,7 @@ package projet100h.hccgca.servlets;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+
+import projet100h.hccgca.services.HccService;
 
 @WebServlet("/hcc")
 public class HccServlet extends AbstractGenericServlet{
@@ -22,6 +25,19 @@ public class HccServlet extends AbstractGenericServlet{
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
 		templateEngine.process("hcc", context, resp.getWriter());
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+        
+		// Les inputs sont bien récupérés
+		String titreHcc =req.getParameter("titreHcc");
+        String texteHcc =req.getParameter("texteHcc");
+
+        HccService.getInstance().addHcc(null, titreHcc, texteHcc);
+        
+        resp.sendRedirect("hcc");
 	}
 
 	
