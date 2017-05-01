@@ -4,33 +4,44 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
-import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
-import org.thymeleaf.templatemode.TemplateMode;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+
+import projet100h.hccgca.services.HccService;
 
 @WebServlet("/ajouthcc")
-public class ModifAjouterHccServlet extends HttpServlet {
+public class ModifAjouterHccServlet extends AbstractGenericServlet{
+
 	private static final long serialVersionUID = 1L;
 
+
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
-		ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
-		templateResolver.setTemplateMode(TemplateMode.HTML);
-		templateResolver.setPrefix("/WEB-INF/templates/");
-		templateResolver.setSuffix(".html");
-		TemplateEngine templateEngine = new TemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver);
-		templateEngine.addDialect(new Java8TimeDialect());	
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-
+		
+		
 		templateEngine.process("modification_ajouter_hcc", context, resp.getWriter());
+	}
 
-}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+        
+		// Les inputs sont bien récupérés
+		String titreHcc =req.getParameter("titreHcc");
+        String texteHcc =req.getParameter("texteHcc");
+        System.out.println("a");
+
+	
+        HccService.getInstance().addHcc(null, titreHcc, texteHcc);
+        
+        resp.sendRedirect("hcc");
+	}
+
 	
 }
