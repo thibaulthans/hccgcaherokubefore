@@ -65,12 +65,17 @@
 
     </div>
 
-      <form action="#" name="formulaire_ajouter_gca" method="post">
+      <form name="formulaireajoutgca" method="post">
       <p class="text_center style_titre_modification margin_top_vingt">Ajouter page GCA</p>
-      <input type="text" placeholder="Titre" class="form-control margin_top_vingt">
-      <textarea type="text" placeholder="Texte de la section" class="form-control input_texte margin_top_vingt" rows="9"></textarea>
+      <input type="text" name="titreGca" placeholder="Titre" class="form-control margin_top_vingt">
+      <textarea type="text" name="texteGca" placeholder="Texte de la section" class="form-control input_texte margin_top_vingt" rows="9"></textarea>
       <div class="col-xs-12 text_center">
-      <input value="Ajouter" class="btn btn-primary margin_top_vingt" type="button">
+      <!--input value="Ajouter" class="btn btn-primary margin_top_vingt" type="button"-->
+      <div class="row">
+                  <div class="btn-group">
+                      <button class="btn btn-primary margin_top_vingt" id="valider" type="button">Ajouter</button>
+                  </div>
+                </div>
       </div>
       </form>
 
@@ -85,6 +90,7 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.min.js"></script>
   <script src="js/globaljs.js"></script>
+  <script src="js/ajoutgca.js"></script>
 
 </body>
 
