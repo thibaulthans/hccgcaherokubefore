@@ -22,11 +22,11 @@ public class HccWS {
 	
 	
 	@POST
-	@Path("")
-	public Response addHcc(@FormParam("titreHcc") String titreHcc, @FormParam("texteHcc") String texteHcc){
+	@Path("/ajouthcc")
+	public Response addHcc(@FormParam("idHcc") int idHcc, @FormParam("titreHcc") String titreHcc, @FormParam("texteHcc") String texteHcc){
 		HccService hccService = HccService.getInstance();
 		try {
-			return Response.status(200).entity(gson.toJson(hccService.saveNewHcc(titreHcc, texteHcc))).build();
+			return Response.status(200).entity(gson.toJson(hccService.addHcc(idHcc, titreHcc, texteHcc))).build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -37,7 +37,7 @@ public class HccWS {
 	
 	@DELETE
 	@Path("")
-	public Response deleteHcc(@FormParam("idHcc") String idHcc){
+	public Response deleteHcc(@FormParam("idHcc") int idHcc){ //ajouter texte et titre?
 		HccService hccService = HccService.getInstance();
 		try {
 			 hccService.deleteHcc(idHcc);
@@ -51,7 +51,7 @@ public class HccWS {
 	
 	@PUT
 	@Path("")
-	public Response updateHcc(@FormParam("idHcc") String idHcc, @FormParam("titreHcc") String titreHcc, @FormParam("texteHcc") String texteHcc){
+	public Response updateHcc(@FormParam("idHcc") int idHcc, @FormParam("titreHcc") String titreHcc, @FormParam("texteHcc") String texteHcc){
 		HccService hccService = HccService.getInstance();
 		try {
 			hccService.saveUpdatedHcc(idHcc, titreHcc, texteHcc);
@@ -78,7 +78,7 @@ public class HccWS {
 	
 	@GET
 	@Path("/hcc/{idHcc}")
-	public Response getHccById(@PathParam("idHcc") String idHcc){
+	public Response getHccById(@PathParam("idHcc") int idHcc){
 		HccService hccService = HccService.getInstance();
 	
 		try {

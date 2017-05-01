@@ -23,10 +23,10 @@ public class GcaWS {
 	
 	@POST
 	@Path("")
-	public Response addGca(@FormParam("titreGca") String titreGca, @FormParam("texteGca") String texteGca){
+	public Response addGca(@FormParam("idGca") int idGca, @FormParam("titreGca") String titreGca, @FormParam("texteGca") String texteGca){
 		GcaService gcaService = GcaService.getInstance();
 		try {
-			return Response.status(200).entity(gson.toJson(gcaService.saveNewGca(titreGca, texteGca))).build();
+			return Response.status(200).entity(gson.toJson(gcaService.addGca(idGca, titreGca, texteGca))).build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -37,7 +37,7 @@ public class GcaWS {
 	
 	@DELETE
 	@Path("")
-	public Response deleteGca(@FormParam("idGca") String idGca){
+	public Response deleteGca(@FormParam("idGca") int idGca){
 		GcaService gcaService = GcaService.getInstance();
 		try {
 			 gcaService.deleteGca(idGca);
@@ -51,7 +51,7 @@ public class GcaWS {
 	
 	@PUT
 	@Path("")
-	public Response updateGca(@FormParam("idGca") String idGca, @FormParam("titreGca") String titreGca, @FormParam("texteGca") String texteGca){
+	public Response updateGca(@FormParam("idGca") int idGca, @FormParam("titreGca") String titreGca, @FormParam("texteGca") String texteGca){
 		GcaService gcaService = GcaService.getInstance();
 		try {
 			gcaService.saveUpdatedGca(idGca, titreGca, texteGca);
@@ -78,7 +78,7 @@ public class GcaWS {
 	
 	@GET
 	@Path("/gca/{idGca}")
-	public Response getGcaById(@PathParam("idGca") String idGca){
+	public Response getGcaById(@PathParam("idGca") int idGca){
 		GcaService gcaService = GcaService.getInstance();
 	
 		try {
