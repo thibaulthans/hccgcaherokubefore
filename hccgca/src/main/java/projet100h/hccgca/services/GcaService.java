@@ -21,15 +21,15 @@ private GcaDao gcaDao = new GcaDao();
 	private GcaService() {
 	}
 	
-	public Gca saveNewGca(String titreGca, String texteGca) {
-		return gcaDao.addGca(titreGca, texteGca);
+	public Gca addGca(Integer idGca, String titreGca, String texteGca) {
+		return gcaDao.addGca(idGca, titreGca, texteGca);
 	}
 	
-	public void deleteGca(String idGca) {
+	public void deleteGca(Integer idGca) {
 		gcaDao.deleteGca(idGca);
 	}
 	
-	public void saveUpdatedGca(String idGca, String titreGca, String texteGca) {
+	public void saveUpdatedGca(Integer idGca, String titreGca, String texteGca) {
 		gcaDao.updateGca(idGca, titreGca, texteGca);
 	}
 	
@@ -37,7 +37,7 @@ private GcaDao gcaDao = new GcaDao();
 		return gcaDao.getGca();
 	}
 
-	public Gca getGcaById(String id) {
+	public Gca getGcaById(Integer id) {
 		return gcaDao.getGcaById(id);
 	}
 

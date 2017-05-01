@@ -21,15 +21,15 @@ private HccDao hccDao = new HccDao();
 	private HccService() {
 	}
 	
-	public Hcc saveNewHcc(String titreHcc, String texteHcc) {
-		return hccDao.addHcc(titreHcc, texteHcc);
+	public Hcc addHcc(Integer idHcc, String titreHcc, String texteHcc) {
+		return hccDao.addHcc(idHcc, titreHcc, texteHcc);
 	}
 	
-	public void deleteHcc(String idHcc) {
+	public void deleteHcc(Integer idHcc) {
 		hccDao.deleteHcc(idHcc);
 	}
 	
-	public void saveUpdatedHcc(String idHcc, String titreHcc, String texteHcc) {
+	public void saveUpdatedHcc(Integer idHcc, String titreHcc, String texteHcc) {
 		hccDao.updateHcc(idHcc, titreHcc, texteHcc);
 	}
 	
@@ -37,7 +37,7 @@ private HccDao hccDao = new HccDao();
 		return hccDao.listHcc();
 	}
 
-	public Hcc getHccById(String id) {
+	public Hcc getHccById(Integer id) {
 		return hccDao.getHccById(id);
 	}
 
