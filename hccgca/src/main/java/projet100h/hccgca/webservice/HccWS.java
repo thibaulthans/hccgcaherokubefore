@@ -22,7 +22,7 @@ public class HccWS {
 	
 	
 	@POST
-	@Path("/ajouthcc")
+	@Path("")
 	public Response addHcc(@FormParam("idHcc") int idHcc, @FormParam("titreHcc") String titreHcc, @FormParam("texteHcc") String texteHcc){
 		HccService hccService = HccService.getInstance();
 		try {
@@ -37,7 +37,7 @@ public class HccWS {
 	
 	@DELETE
 	@Path("")
-	public Response deleteHcc(@FormParam("idHcc") int idHcc){ //ajouter texte et titre?
+	public Response deleteHcc(@FormParam("idHcc") int idHcc, @FormParam("titreHcc") String titreHcc, @FormParam("texteHcc") String texteHcc){
 		HccService hccService = HccService.getInstance();
 		try {
 			 hccService.deleteHcc(idHcc);
@@ -77,7 +77,7 @@ public class HccWS {
 }
 	
 	@GET
-	@Path("/hcc/{idHcc}")
+	@Path("/{idHcc}")
 	public Response getHccById(@PathParam("idHcc") int idHcc){
 		HccService hccService = HccService.getInstance();
 	

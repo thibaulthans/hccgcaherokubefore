@@ -37,7 +37,7 @@ public class GcaWS {
 	
 	@DELETE
 	@Path("")
-	public Response deleteGca(@FormParam("idGca") int idGca){
+	public Response deleteGca(@FormParam("idGca") int idGca, @FormParam("titreGca") String titreGca, @FormParam("texteGca") String texteGca){
 		GcaService gcaService = GcaService.getInstance();
 		try {
 			 gcaService.deleteGca(idGca);
