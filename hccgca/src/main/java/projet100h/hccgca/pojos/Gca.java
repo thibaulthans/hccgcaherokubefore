@@ -2,7 +2,7 @@ package projet100h.hccgca.pojos;
 
 public class Gca {
 
-	private String idGca;
+	private Integer idGca;
 	private String titreGca;
 	private String texteGca;
 	
@@ -10,13 +10,7 @@ public class Gca {
 		
 	}
 	
-	public Gca(String titreGca, String texteGca) {
-		super();
-		this.titreGca = titreGca;
-		this.texteGca = texteGca;
-	}
-	
-	public Gca(String idGca, String titreGca, String texteGca) {
+	public Gca(Integer idGca, String titreGca, String texteGca) {
 		super();
 		this.idGca = idGca;
 		this.titreGca = titreGca;
@@ -24,11 +18,11 @@ public class Gca {
 	}
 	
 	
-	public String getIdGca() {
+	public Integer getIdGca() {
 		return idGca;
 	}
 
-	public void setIdGca(String idGca) {
+	public void setIdGca(Integer idGca) {
 		this.idGca = idGca;
 	}
 
