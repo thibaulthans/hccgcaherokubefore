@@ -30,7 +30,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="formulaire.html">Formulaire</a></li>
-          <li><a href="modification">Modification</a></li>
+          <li><a href="modification.html">Modification</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -43,23 +43,19 @@
       <div class="form-group">
           <label class="col-md-4 control-label" for="singlebutton"></label>
           <div class="col-md-4 text-center">
-            <div class="btn-group">
-
-                <div id="ajouter" class="btn btn-default center-block">
-                  <a href="ajout">
+            <div class="btn-group" data-toggle="buttons">
+                <label id="href_ajouter" class="btn btn-default center-block">
+                  <input role="presentation" type="radio">
                   Ajouter
-                  </a>
-                </div>
-                <div id="href_supprimer" class="btn btn-default active center-block">
-                  <a href="suppression">
+                </label>
+                <label id="href_supprimer" class="btn btn-default active center-block">
+                  <input role="presentation" type="radio">
                   Supprimer
-                  </a>
-                </div>
-                <div id="href_modifier" class="btn btn-default center-block">
-                  <a href="modification">
+                </label>
+                <label id="href_modifier" class="btn btn-default center-block">
+                  <input role="presentation" type="radio">
                   Modifier
-                  </a>
-                </div>
+                </label>
             </div>
         </div>
       </div>

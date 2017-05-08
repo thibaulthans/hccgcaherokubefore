@@ -56,31 +56,30 @@
 
 
   <div class="container-fluid">
+     <form method="post" enctype="multipart/form-data">
       <div class="row">
       <div class="col-lg-6 center_horizontal">
         <h3 class="text_royalbleu">Coordonnées</h3>
         <div class="form-group">
-          <input class="form-control" type="text" placeholder="Prenom">
+          <input class="form-control" name="prenom" type="text" placeholder="Prenom">
         </div>
         <div class="margin_dixpx"></div>
         <div class="form-group">
-          <input class="form-control" type="text" placeholder="Nom">
+          <input class="form-control" name="nom" type="text" placeholder="Nom">
         </div>
         <div class="margin_dixpx"></div>
         <div class="form-group">
-          <input class="form-control" type="text" placeholder="Mail">
+          <input class="form-control" name="mail" type="text" placeholder="Mail">
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" placeholder="Formation">
+          <input class="form-control" name="formation" type="text" placeholder="Formation">
         </div>
         <div class="form-group">
-          <form>
-              <select required class="form-control">
+              <select required name="poste" class="form-control">
                   <option value="" disabled selected hidden>Poste recherché</option>
                   <option value="0">Audit</option>
                   <option value="1">Comptabilité</option>
               </select>
-          </form>
         </div>
       </div>
 
@@ -90,26 +89,19 @@
         </div>
         <div class="margin_dixpx"></div>
         <div class="form-group">
-          <form action="a">
             <div class="input-file-container">
               <label>Curriculum Vitae</label></br>
               <label for="file-upload" class="form-control custom_file_upload">
                   Ajouter votre curriculum vitae
               </label>
-              <input id="file-upload" type="file"/>
+              <input type="file" id="file-upload" name="filecv">
             </div>
-          </form>
         </div>
         <div class="form-group">
-          <form action="a">
             <div class="input-file-container">
               <label>Lettre de motivation</label></br>
-              <label for="file-upload" class="form-control custom_file_upload">
-                    Ajouter votre lettre de motivation
-              </label>
-              <input id="file-upload" type="file"/>
+              <textarea type="texte" class="col-xs-12 center_horizontal" name="lettreMotivation"></textarea>
             </div>
-          </form>
         </div>
       </div>
 
@@ -117,9 +109,10 @@
 
 <div class="row center_horizontal">
   <div class="btn-group">
-      <button class="btn btn-primary button_pers_small center_horizontal" type="button">Envoyer</button>
+      <input class="btn btn-primary button_pers_small center_horizontal" type="submit">
   </div>
 </div>
+</form>
 </div>
 
 <div class="margin_cinquantepx"></div>

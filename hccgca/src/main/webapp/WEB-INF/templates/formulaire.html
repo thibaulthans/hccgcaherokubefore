@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
   <meta charset="utf-8">
     <title>Back office</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/baseback.css" rel="stylesheet">
-  <link href="css/homeback.css" rel="stylesheet">
+  <link th:href="@{cssbackoffice/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{cssbackoffice/baseback.css}" rel="stylesheet">
+<link th:href="@{cssbackoffice/homeback.css}" rel="stylesheet">
 </script>
 </head>
 
@@ -39,34 +40,25 @@
 
 <div class="container-fluid">
 
-  <div class="row">
-  <div class="col-md-offset-3 col-md-9 margin_top_vingt">
-    <form>
-    <div class="col-md-3">
-    <select required class="form-control">
-        <option value="" disabled selected hidden>Type formulaire</option>
-        <option value="0">Tout</option>
-        <option value="0">Contact rapide</option>
-        <option value="1">Devis</option>
-        <option value="0">Recrutement</option>
-    </select>
-    </div>
-
-    <div class="col-md-3">
-    <select required class="form-control">
-        <option value="" disabled selected hidden>Date</option>
-        <option value="0">Du plus récent</option>
-        <option value="1">Du plus vieux</option>
-    </select>
-    </div>
-
-    <div class="col-md-2">
-      <button type="button" class="btn btn-default">Rechercher</button>
-    </div>
-
-   </form>
-  </div>
-  </div>
+      <div class="form-group">
+          <label class="col-md-4 control-label" for="singlebutton"></label>
+          <div class="col-md-4 text-center">
+            <div class="btn-group" data-toggle="buttons">
+                <label id="href_ajouter" class="btn btn-default active center-block">
+                  <input role="presentation" type="radio">
+                   Contact
+                </label>
+                <label id="href_supprimer" class="btn btn-default center-block">
+                  <input role="presentation" type="radio">
+                  Devis
+                </label>
+                <label id="href_modifier" class="btn btn-default center-block">
+                  <input role="presentation" type="radio">
+                  Recrutement
+                </label>
+            </div>
+        </div>
+      </div>
 
 
        <div class="row margin_bottom_quarante">
@@ -81,14 +73,20 @@
              </tr>
            </thead>
            <tbody>
-             <tr class="test" onclick="document.location = 'connexion.html';">
-               <th scope="row">1</th>
-               <td>Devis</td>
-               <td>Otto</td>
-               <td>@mdo</td>
+             <tr th:each="contact : ${contacts}"class="test" onclick="document.location = 'connexion.html';">
+               <th scope="row" th:text="${contact.idContact}"></th>
+               <td th:text="${contact.dateContact}"></td>
+               <td th:text="${contact.nom}"></td>
+               <td th:text="${contact.mail}"></td>
              </tr>
-             <tr>
-               <th scope="row">2</th>
+             <tr th:each="devi : ${devis}"class="test" onclick="document.location = 'connexion.html';">
+               <th scope="row" th:text="${devi.idDevis}"></th>
+               <td th:text="${devi.dateDevis}"></td>
+               <td th:text="${devi.nom}"></td>
+               <td th:text="${devi.mail}"></td>
+             </tr> 
+              <tr>
+               <th scope="row">2</th> 
                <td>contact</td>
                <td>Thornton</td>
                <td>@fat</td>

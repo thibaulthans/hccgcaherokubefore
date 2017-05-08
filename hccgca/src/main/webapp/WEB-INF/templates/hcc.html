@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,30 +57,18 @@
 
 
   <div class="container-fluid image_background">
-    <div class="center_horizontal">
+    <div class="row center_horizontal">
       <h2 class="text_white">HCC</h2>
     </div>
-    <div class="center_horizontal margin_centvingtpx">
+    <div class="row center_horizontal margin_centvingtpx">
     <div class="btn-group">
         <button class="btn btn-primary dropdown-toggle button_pers_large center_horizontal" id="btn_action" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Basic dropdown
         </button>
         <div class="dropdown-menu dropdown_button_pers center_horizontal">
-           <div class="dropdown_list">
-              <a class="dropdown-item a_dropdownlist scroll" href="#section1">L'organisation</a>
+           <div th:each="hcc : ${hccs}"  class="dropdown_list">
+              <a th:text="${hcc.titreHcc}" class="dropdown-item a_dropdownlist scroll" th:href="'#section'+${hcc.idHcc}"></a>
            </div>
-           <div>
-              <a class="dropdown-item a_dropdownlist scroll" href="#section2">Conseil en gestion</a>
-          </div>
-          <div>
-              <a class="dropdown-item a_dropdownlist scroll" href="#section3">Conseil financier LBO</a>
-          </div>
-          <div>
-              <a class="dropdown-item a_dropdownlist scroll" href="#">Conseil en gestion de patrimoine</a>
-          </div>
-          <div>
-              <a class="dropdown-item a_dropdownlist" href="#">Conseil en gestion immobilière</a>
-          </div>
         </div>
     </div>
          <div class="container">
@@ -95,33 +83,16 @@
 
 <div class="container-fluid style_body_hccgca">
 
-<div class="cara"></div>
-  <div class="article_rectangle" id="section1">
-  <h2>Audit Légal</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  </div>
+<div th:each="hcc : ${hccs}" class="cara"></div>
 
+  <div th:each="hcc : ${hccs}" class="article_rectangle" th:id="'section'+${hcc.idHcc}">
+    <h2 th:text="${hcc.titreHcc}"></h2>
+    <p th:text="${hcc.texteHcc}"></p>
+   
+</div>
+  
   <div class="cara"></div>
 
-  <div class="article_rectangle" id="section2">
-  <h2>Audit Légal</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  </div>
-
-  <div class="cara"></div>
-
-  <div class="article_rectangle" id="section3">
-  <h2>Audit Légal</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  </div>
-
-  <div class="cara"></div>
 </div>
 
 
@@ -131,6 +102,7 @@
 
       <div class="container-fluid white-blue">
 
+        <div class="row">
 
         <div class="col-lg-4 center_horizontal">
             <div>
@@ -165,13 +137,14 @@
 
 </div>
 <div class="margin_dixpx"></div>
-
+</div>
+    <div class="row">
       <div class="container-fluid dark-blue">
           <div>
             Mentions légales
           </div>
       </div>
-
+    </div>
 
 </footer>
 
