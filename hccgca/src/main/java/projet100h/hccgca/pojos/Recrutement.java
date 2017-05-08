@@ -1,29 +1,52 @@
 package projet100h.hccgca.pojos;
 
+import javax.servlet.http.Part;
+
 public class Recrutement {
 
+	private Integer idRecrutement;
 	private String prenom;
 	private String nom;
 	private String mail;
 	private String formation;
 	private String posteRecherche;
-	private String cv;
 	private String lettreMotivation;
+	private String dateRecrutement;
 	
 	
-	public Recrutement(String prenom, String nom, String mail, String formation, String posteRecherche, String cv,
-			String lettreMotivation) {
+	public Recrutement(Integer idRecrutement, String prenom, String nom, String mail, String formation, String posteRecherche, String dateRecrutement, String lettreMotivation) {
 		super();
+		this.lettreMotivation=lettreMotivation;
+		this.dateRecrutement=dateRecrutement;
+		this.idRecrutement=idRecrutement;
 		this.prenom = prenom;
 		this.nom = nom;
 		this.mail = mail;
 		this.formation = formation;
 		this.posteRecherche = posteRecherche;
-		this.cv = cv;
+	}
+
+
+
+	public String getLettreMotivation() {
+		return lettreMotivation;
+	}
+
+
+
+	public void setLettreMotivation(String lettreMotivation) {
 		this.lettreMotivation = lettreMotivation;
 	}
+
+
+
+	public Integer getIdRecrutement(){
+		return idRecrutement;
+	}
 	
-	
+	public void setIdRecrutement(Integer idRecrutement){
+		this.idRecrutement=idRecrutement;
+	}
 	
 	public String getPrenom() {
 		return prenom;
@@ -55,20 +78,14 @@ public class Recrutement {
 	public void setPosteRecherche(String posteRecherche) {
 		this.posteRecherche = posteRecherche;
 	}
-	public String getCv() {
-		return cv;
+
+	public String getDateRecrutement() {
+		return dateRecrutement;
 	}
-	public void setCv(String cv) {
-		this.cv = cv;
+
+	public void setDateRecrutement(String dateRecrutement) {
+		this.dateRecrutement = dateRecrutement;
 	}
-	public String getLettreMotivation() {
-		return lettreMotivation;
-	}
-	public void setLettreMotivation(String lettreMotivation) {
-		this.lettreMotivation = lettreMotivation;
-	}
-	
-	
 	
 }
 
