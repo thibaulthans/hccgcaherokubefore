@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import projet100h.hccgca.pojos.Contact;
 import projet100h.hccgca.pojos.Devis;
 
 
@@ -72,23 +73,23 @@ public Devis getDevisById(Integer idDevis) {
 }
 
 public List<Devis> listDevis() {
-	ArrayList<Devis> lstdevis = new ArrayList<>();
-	try (
-		Connection connection = DataSourceProvider.getDataSource().getConnection();
-		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM devis")){
-		ResultSet rs = stmt.executeQuery();
-		while (rs.next()) {
-			 lstdevis.add(new Devis(rs.getInt("idDevis"), rs.getString("secteurActivite"), rs.getString("chiffreAffaire"), rs.getString("nbSalarie"), rs.getString("missions"),
-					 rs.getInt("valeurFacture"), rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), rs.getString("informationsSupplementaires"), rs.getString("dateDevis")));
-		}
-		rs.close();
-		stmt.close();
-		connection.close();
+	String query = "SELECT * FROM devis";
+	List<Devis> devis = new ArrayList<>(); 
+	try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
+		try (Statement statement = connection.createStatement()) {
+			try (ResultSet rs = statement.executeQuery(query)) {
+				while(rs.next()) {						
+					devis.add(new Devis(rs.getInt("idDevis"), rs.getString("secteurActivite"), rs.getString("chiffreAffaire"), rs.getString("nbSalarie"), rs.getString("missions"),
+							 rs.getInt("valeurFacture"), rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"), rs.getString("informationsSupplementaires"), rs.getString("dateDevis")));
+				}
+			}
+		}			
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-	return lstdevis;
+	return devis;
 }
+
 
 
 }

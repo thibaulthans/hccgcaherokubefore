@@ -14,7 +14,7 @@ public class GcaDao {
 
 public Gca addGca(Integer idGca, String titreGca, String texteGca) {
 	try {
-		Connection connection = DataSourceProvider.getDataSource().getConnection(); 
+		Connection connection = DataSourceProvider.getDataSource().getConnection();
 		PreparedStatement statement = connection.prepareStatement("INSERT INTO gca(titreGca, texteGca) VALUES(?,?)", Statement.RETURN_GENERATED_KEYS);
 		statement.setString(1, titreGca);
 		statement.setString(2, texteGca);
@@ -29,7 +29,7 @@ public Gca addGca(Integer idGca, String titreGca, String texteGca) {
 
 public void deleteGca(Integer idGca){
 	try {
-		Connection connection = DataSourceProvider.getDataSource().getConnection(); 
+		Connection connection = DataSourceProvider.getDataSource().getConnection();
 		PreparedStatement statement = connection.prepareStatement("DELETE FROM gca WHERE idGca=?");
 		statement.setInt(1, idGca);
 		statement.executeUpdate();	
@@ -42,7 +42,7 @@ public void deleteGca(Integer idGca){
 
 public void updateGca(Integer idGca, String titreGca, String texteGca) {
 	try {
-		Connection connection = DataSourceProvider.getDataSource().getConnection(); 
+		Connection connection = DataSourceProvider.getDataSource().getConnection();
 		PreparedStatement statement = connection.prepareStatement("UPDATE gca SET titreGca=?, texteGca=? WHERE idGca=?");
 		statement.setString(1, titreGca);
 		statement.setString(2, texteGca);
@@ -73,7 +73,7 @@ connection.close();
 	return gca;
 }
 
-public List<Gca> getGca() {
+public List<Gca> listGca() {
 	ArrayList<Gca> lstgca = new ArrayList<>(); 
 	try (
 		Connection connection = DataSourceProvider.getDataSource().getConnection();
@@ -90,5 +90,6 @@ connection.close();
 	}
 	return lstgca;
 }
+
 	
 }

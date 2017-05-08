@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import projet100h.hccgca.daos.DataSourceProvider;
 import projet100h.hccgca.pojos.Contact;
 
 
@@ -67,22 +68,22 @@ public Contact getContactById(Integer idContact) {
 	return contact;
 }
 
-public List<Contact> listContacts() {
-	ArrayList<Contact> lstcontact = new ArrayList<>();
-	try (
-		Connection connection = DataSourceProvider.getDataSource().getConnection();
-		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM contact")){
-		ResultSet rs = stmt.executeQuery();
-		while (rs.next()) {
-			 lstcontact.add(new Contact(rs.getInt("idContact"), rs.getString("nom"), rs.getString("mail"), rs.getString("objet"), rs.getString("message"), rs.getString("dateContact")));
-		}
-		rs.close();
-		stmt.close();
-		connection.close();
+public List<Contact> listContact() {
+	String query = "SELECT * FROM contact";
+	List<Contact> contacts = new ArrayList<>(); 
+	try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
+		try (Statement statement = connection.createStatement()) {
+			try (ResultSet rs = statement.executeQuery(query)) {
+				while(rs.next()) {						
+					contacts.add(new Contact( rs.getInt("idContact"), rs.getString("nom"), rs.getString("mail"), rs.getString("objet"), rs.getString("message"), rs.getString("dateContact")));
+				}
+			}
+		}			
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-	return lstcontact;
+	return contacts;
 }
+
 
 }

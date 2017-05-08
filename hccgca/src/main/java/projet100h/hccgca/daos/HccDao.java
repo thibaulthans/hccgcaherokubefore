@@ -14,7 +14,7 @@ public class HccDao {
 
 public Hcc addHcc(Integer idHcc, String titreHcc, String texteHcc) {
 	try {
-		Connection connection = DataSourceProvider.getDataSource().getConnection(); 
+		Connection connection = DataSourceProvider.getDataSource().getConnection();
 		PreparedStatement statement = connection.prepareStatement("INSERT INTO hcc(titreHcc, texteHcc) VALUES(?,?)", Statement.RETURN_GENERATED_KEYS);
 		statement.setString(1, titreHcc);
 		statement.setString(2, texteHcc);
@@ -29,7 +29,7 @@ public Hcc addHcc(Integer idHcc, String titreHcc, String texteHcc) {
 
 public void deleteHcc(Integer idHcc){
 	try {
-		Connection connection = DataSourceProvider.getDataSource().getConnection(); 
+		Connection connection = DataSourceProvider.getDataSource().getConnection();
 		PreparedStatement statement = connection.prepareStatement("DELETE FROM hcc WHERE idHcc=?");
 		statement.setInt(1, idHcc);
 		statement.executeUpdate();	
@@ -42,7 +42,7 @@ public void deleteHcc(Integer idHcc){
 
 public void updateHcc(Integer idHcc, String titreHcc, String texteHcc) {
 	try {
-		Connection connection = DataSourceProvider.getDataSource().getConnection(); 
+		Connection connection = DataSourceProvider.getDataSource().getConnection();
 		PreparedStatement statement = connection.prepareStatement("UPDATE hcc SET titreHcc=?, texteHcc=? WHERE idHcc=?");
 		statement.setString(1, titreHcc);
 		statement.setString(2, texteHcc);
