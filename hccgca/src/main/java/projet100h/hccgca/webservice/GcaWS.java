@@ -68,7 +68,7 @@ public class GcaWS {
 	public Response listGca(){
 		GcaService gcaService = GcaService.getInstance();
 		try {
-			return Response.status(200).entity(gson.toJson(gcaService.getGca())).build();
+			return Response.status(200).entity(gson.toJson(gcaService.listGca())).build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
