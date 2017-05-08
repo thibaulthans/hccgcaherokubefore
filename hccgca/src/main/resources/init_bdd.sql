@@ -3,13 +3,13 @@ CREATE TABLE `recrutement`
 (
 	`idRecrutement` INT NOT NULL AUTO_INCREMENT,
 	`prenom`  VARCHAR(100) NOT NULL,
-	`nom` VARCHAR(100) NOT NULL,
+	`nom` VARCHAR(100) NOT NULL, 
     `mail`  VARCHAR(100) NOT NULL,
 	`formation` VARCHAR(100) NOT NULL,
     `posteRecherche` VARCHAR(100) NOT NULL,
-    `cv` VARCHAR(100) NOT NULL,
-    `lettreMotivation` VARCHAR(100) NOT NULL,
     `dateRecrutement` VARCHAR(100) NOT NULL,
+    `cv` VARCHAR(100) NULL,
+    `lettreMotivation` VARCHAR(100) NULL,
 	PRIMARY KEY (`idRecrutement`)
 )DEFAULT CHARSET=utf8;
     
@@ -45,7 +45,7 @@ CREATE TABLE `contact`
 DROP TABLE IF EXISTS `hcc`;
 CREATE TABLE `hcc` 
 (
-	`idHcc`  INT NOT NULL AUTO_INCREMENT,
+	`idHcc`   INT NOT NULL AUTO_INCREMENT,
 	`titreHcc` VARCHAR(100) NOT NULL,
     `texteHcc`  VARCHAR(2000) NOT NULL,
 	PRIMARY KEY (`idHcc`)
