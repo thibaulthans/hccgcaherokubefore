@@ -18,8 +18,6 @@ public class ContactService {
 		return 	ContactServiceHolder.instance;
 	}
 	
-	private ContactService() {
-	}
 	
 	public Contact saveNewContact(Integer idContact, String nom, String mail, String objet, String message, String dateContact) {
 		return contactDao.saveNewContact(idContact, nom, mail, objet, message, dateContact);
@@ -30,7 +28,7 @@ public class ContactService {
 	}
 	
 	public List<Contact> listContact() {
-		return contactDao.listContacts();
+		return contactDao.listContact();
 	}
 
 	public Contact getContactById(Integer id) {

@@ -18,8 +18,6 @@ private HccDao hccDao = new HccDao();
 		return 	HccServiceHolder.instance;
 	}
 	
-	private HccService() {
-	}
 	
 	public Hcc addHcc(Integer idHcc, String titreHcc, String texteHcc) {
 		return hccDao.addHcc(idHcc, titreHcc, texteHcc);

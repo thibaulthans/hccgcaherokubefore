@@ -18,8 +18,6 @@ private GcaDao gcaDao = new GcaDao();
 		return 	GcaServiceHolder.instance;
 	}
 	
-	private GcaService() {
-	}
 	
 	public Gca addGca(Integer idGca, String titreGca, String texteGca) {
 		return gcaDao.addGca(idGca, titreGca, texteGca);
@@ -33,13 +31,15 @@ private GcaDao gcaDao = new GcaDao();
 		gcaDao.updateGca(idGca, titreGca, texteGca);
 	}
 	
-	public List<Gca> getGca() {
-		return gcaDao.getGca();
+	public List<Gca> listGca() {
+		return gcaDao.listGca();
 	}
 
 	public Gca getGcaById(Integer id) {
 		return gcaDao.getGcaById(id);
 	}
+
+
 
 	
 }
