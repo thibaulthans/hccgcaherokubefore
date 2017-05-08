@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +34,6 @@ public class DevisServlet extends AbstractGenericServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-		// Les inputs sont bien récupérés
         String secteurActivite =req.getParameter("select_secteur_activite");
         System.out.println(secteurActivite);
         String chiffreAffaire =req.getParameter("select_chiffre_affaire");
@@ -51,7 +51,6 @@ public class DevisServlet extends AbstractGenericServlet{
 
         DevisService.getInstance().saveNewDevis(null, secteurActivite,chiffreAffaire,nbSalarie,missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis);
         
-        resp.sendRedirect("devis");
 
 	}
 

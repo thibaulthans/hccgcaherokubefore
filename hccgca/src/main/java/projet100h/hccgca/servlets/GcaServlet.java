@@ -1,6 +1,7 @@
 package projet100h.hccgca.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import projet100h.hccgca.pojos.Gca;
+import projet100h.hccgca.pojos.Hcc;
+import projet100h.hccgca.services.GcaService;
 import projet100h.hccgca.services.HccService;
 
 @WebServlet("/gca")
@@ -23,20 +27,10 @@ public class GcaServlet extends AbstractGenericServlet{
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
-		templateEngine.process("gca", context, resp.getWriter());
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		List<Gca> listGca = GcaService.getInstance().listGca();
+		context.setVariable("gcas", listGca);
 		
-        
-		// Les inputs sont bien récupérés
-		String titreGca =req.getParameter("titreGca");
-        String texteGca =req.getParameter("texteGca");
-
-        HccService.getInstance().addHcc(null, titreGca, texteGca);
-        
-        resp.sendRedirect("gca");
+		templateEngine.process("gca", context, resp.getWriter());
 	}
 
 	

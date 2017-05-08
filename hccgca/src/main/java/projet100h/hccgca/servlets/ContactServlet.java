@@ -29,13 +29,13 @@ public class ContactServlet extends AbstractGenericServlet{
 		
 		
 		templateEngine.process("contact", context, resp.getWriter());
+		
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
         
-		// Les inputs sont bien récupérés
 		String nom =req.getParameter("nom");
         String mail =req.getParameter("inputemail");
         String objet =req.getParameter("objet");
@@ -43,10 +43,7 @@ public class ContactServlet extends AbstractGenericServlet{
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
 		Date date = new Date();
 		String dateContact =dateFormat.format(date);
-		System.out.println(dateContact);
-		System.out.println("a");
-		
-		Integer a= null;
+
 
 	
         ContactService.getInstance().saveNewContact(null, nom,mail,objet,message, dateContact);

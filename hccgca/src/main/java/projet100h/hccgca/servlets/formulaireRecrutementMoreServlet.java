@@ -11,46 +11,47 @@ import javax.servlet.http.HttpSession;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import projet100h.hccgca.services.HccService;
+import projet100h.hccgca.pojos.Recrutement;
+import projet100h.hccgca.services.RecrutementService;
 
-@WebServlet("/ajouter_hcc")
-public class ModifAjouterHccServlet extends AbstractGenericServlet{
 
+@WebServlet("/formulaire_recrutement_more")
+public class formulaireRecrutementMoreServlet extends AbstractGenericServlet{
+	
+	
 	private static final long serialVersionUID = 1L;
-
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		   HttpSession session=req.getSession(false);  
 
-				if(session!=null){
-					
-				}else{
-					resp.sendRedirect("connexion");
-				}
-		
+			if(session!=null){
+				
+			}else{
+				resp.sendRedirect("connexion");
+			}
+			
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		
-		
-		templateEngine.process("modification_ajouter_hcc", context, resp.getWriter());
-	}
 
+		Integer recrutementId = Integer.parseInt(req.getParameter("idRecrutement"));
+		Recrutement recrutement = RecrutementService.getInstance().getRecrutementById(recrutementId);
+		context.setVariable("recrutement", recrutement);
+		
+		templateEngine.process("formulaire_more_recrutement", context, resp.getWriter());
+
+	
+	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-        
-		// Les inputs sont bien récupérés
-		String titreHcc =req.getParameter("titreHcc");
-        String texteHcc =req.getParameter("texteHcc");
 
-	
-        HccService.getInstance().addHcc(null, titreHcc, texteHcc);
-        
-        resp.sendRedirect("hcc");
+		Integer recrutementId = Integer.parseInt(req.getParameter("idRecrutement"));
+		RecrutementService.getInstance().deleteRecrutement(recrutementId);
+		resp.sendRedirect("formulaire_recrutement");
+		 
 	}
 
-	
 }

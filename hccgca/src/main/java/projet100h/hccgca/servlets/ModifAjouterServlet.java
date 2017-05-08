@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -14,11 +15,19 @@ import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-@WebServlet("/ajout")
+@WebServlet("/ajouter")
 public class ModifAjouterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		   HttpSession session=req.getSession(false);  
+
+			if(session!=null){
+				
+			}else{
+				resp.sendRedirect("connexion");
+			}
 		
 		ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
 		templateResolver.setTemplateMode(TemplateMode.HTML);

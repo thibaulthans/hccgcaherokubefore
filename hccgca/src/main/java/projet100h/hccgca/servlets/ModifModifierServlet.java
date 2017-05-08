@@ -14,7 +14,7 @@ import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-@WebServlet("/modification")
+@WebServlet("/modifier")
 public class ModifModifierServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

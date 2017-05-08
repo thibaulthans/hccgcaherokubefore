@@ -6,13 +6,14 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
 import projet100h.hccgca.services.GcaService;
 
-@WebServlet("/ajoutgca")
+@WebServlet("/ajouter_gca")
 public class ModifAjouterGcaServlet extends AbstractGenericServlet{
 
 	private static final long serialVersionUID = 1L;
@@ -20,6 +21,15 @@ public class ModifAjouterGcaServlet extends AbstractGenericServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		   HttpSession session=req.getSession(false);  
+
+				if(session!=null){
+					
+				}else{
+					resp.sendRedirect("connexion");
+				}
+				
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -35,7 +45,6 @@ public class ModifAjouterGcaServlet extends AbstractGenericServlet{
 		// Les inputs sont bien récupérés
 		String titreGca =req.getParameter("titreGca");
         String texteGca =req.getParameter("texteGca");
-        System.out.println("a");
 
 	
         GcaService.getInstance().addGca(null, titreGca, texteGca);
