@@ -27,7 +27,7 @@ private GcaDao gcaDao = new GcaDao();
 		gcaDao.deleteGca(idGca);
 	}
 	
-	public void saveUpdatedGca(Integer idGca, String titreGca, String texteGca) {
+	public void updateGca(Integer idGca, String titreGca, String texteGca) {
 		gcaDao.updateGca(idGca, titreGca, texteGca);
 	}
 	

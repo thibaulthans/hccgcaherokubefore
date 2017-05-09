@@ -27,7 +27,7 @@ private HccDao hccDao = new HccDao();
 		hccDao.deleteHcc(idHcc);
 	}
 	
-	public void saveUpdatedHcc(Integer idHcc, String titreHcc, String texteHcc) {
+	public void updateHcc(Integer idHcc, String titreHcc, String texteHcc) {
 		hccDao.updateHcc(idHcc, titreHcc, texteHcc);
 	}
 	
