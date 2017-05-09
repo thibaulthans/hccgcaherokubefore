@@ -6,10 +6,6 @@ public class Hcc {
 	private String titreHcc;
 	private String texteHcc;
 	
-	public Hcc() {
-		
-	}
-	
 
 	public Hcc(Integer idHcc, String titreHcc, String texteHcc) {
 		super();
