@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+    <title>Back office</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link th:href="@{cssbackoffice/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{cssbackoffice/baseback.css}" rel="stylesheet">
+    <link th:href="@{cssbackoffice/homeback.css}" rel="stylesheet">
+  <link th:href="@{cssbackoffice/modification.css}" rel="stylesheet">
+</head>
+
+<body class="style_body">
+
+  <nav class="navbar navbar-default bleu_royal_clair">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="homeback.html">Back office</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="formulaire.html">Formulaire</a></li>
+          <li><a href="modification.html">Modification</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="form-group">
+          <label class="col-md-4 control-label" for="singlebutton"></label>
+          <div class="col-md-4 text-center">
+            <div class="btn-group" data-toggle="buttons">
+                <label id="href_ajouter" class="btn btn-default center-block">
+                  <input role="presentation" type="radio">
+                  Ajouter
+                </label>
+                <label id="href_supprimer" class="btn btn-default active center-block">
+                  <input role="presentation" type="radio">
+                  Supprimer
+                </label>
+                <label id="href_modifier" class="btn btn-default center-block">
+                  <input role="presentation" type="radio">
+                  Modifier
+                </label>
+            </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="text_center style_titre_modification margin_top_vingt">Modifier page HCC</p>
+         
+         <form method="post">
+              <div class="article_rectangle">
+                 <textarea th:text="${hcc.titreHcc}" name="titreHcc" class="form-control"></textarea>
+                 <textarea th:text="${hcc.texteHcc}" name="texteHcc" class="form-control"></textarea>
+              </div>
+              <div class="row">
+                 <div class="btn-group">
+                     <input class="btn btn-primary margin_top_vingt" value="Modifier" id="valider" type="submit">
+                 </div>
+              </div>
+         </form>
+     
+
+
+    </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  
+</body>
+
+</html>
