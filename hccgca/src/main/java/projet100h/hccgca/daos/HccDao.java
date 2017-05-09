@@ -46,6 +46,7 @@ public void updateHcc(Integer idHcc, String titreHcc, String texteHcc) {
 		PreparedStatement statement = connection.prepareStatement("UPDATE hcc SET titreHcc=?, texteHcc=? WHERE idHcc=?");
 		statement.setString(1, titreHcc);
 		statement.setString(2, texteHcc);
+		statement.setInt(3, idHcc);
 		statement.executeUpdate();
 		statement.close();
 connection.close();

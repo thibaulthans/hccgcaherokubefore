@@ -46,6 +46,7 @@ public void updateGca(Integer idGca, String titreGca, String texteGca) {
 		PreparedStatement statement = connection.prepareStatement("UPDATE gca SET titreGca=?, texteGca=? WHERE idGca=?");
 		statement.setString(1, titreGca);
 		statement.setString(2, texteGca);
+		statement.setInt(3, idGca);
 		statement.executeUpdate();
 		statement.close();
 connection.close();
