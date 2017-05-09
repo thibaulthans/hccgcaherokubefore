@@ -30,6 +30,8 @@ public class ConnexionServlet extends AbstractGenericServlet {
 	public void init() throws ServletException {
 		utilisateursAutorises = new HashMap<>();
 		utilisateursAutorises.put("jeanhans", "7d7ded5b5c6ace98016228f1c3527ad696260e6b3bffe4d7:a5073d4aacb6d1821f1c72e4c9f513b944c85e14bd5964f5");
+		//utilisateursAutorises.put(récupérer login,mot de passe crypter)
+		
 	}	
 	
 	

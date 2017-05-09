@@ -19,8 +19,8 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import projet100h.hccgca.pojos.Gca;
 import projet100h.hccgca.services.GcaService;
 
-@WebServlet("/supprimer_gca")
-public class ModifSupprimerGcaServlet extends HttpServlet {
+@WebServlet("/modifier_gca")
+public class ModifModifierGcaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,7 +45,7 @@ public class ModifSupprimerGcaServlet extends HttpServlet {
 		List<Gca> listGca = GcaService.getInstance().listGca();
 		context.setVariable("gcas", listGca);
 
-		templateEngine.process("modification_supprimer_gca", context, resp.getWriter());
+		templateEngine.process("modification_modifier_gca", context, resp.getWriter());
 
 }
 	

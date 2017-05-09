@@ -1,8 +1,7 @@
 package projet100h.hccgca.servlets;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,18 +12,19 @@ import javax.servlet.http.HttpSession;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import projet100h.hccgca.pojos.Recrutement;
-import projet100h.hccgca.services.RecrutementService;
+import projet100h.hccgca.pojos.Gca;
+import projet100h.hccgca.services.GcaService;
 
 
-@WebServlet("/formulaire_recrutement_more")
-public class formulaireRecrutementMoreServlet extends AbstractGenericServlet{
-	
+@WebServlet("/modifier_details_gca")
+public class ModifModifierDetailsGcaServlet extends AbstractGenericServlet{
+
 	
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		
 		   HttpSession session=req.getSession(false);  
 
@@ -33,28 +33,28 @@ public class formulaireRecrutementMoreServlet extends AbstractGenericServlet{
 			}else{
 				resp.sendRedirect("connexion");
 			}
-			
+		
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-
-		Integer recrutementId = Integer.parseInt(req.getParameter("idRecrutement"));
-		Path cvPath = RecrutementService.getInstance().getCvPatch(recrutementId);
-		Files.copy(cvPath, resp.getOutputStream());
-		Recrutement recrutement = RecrutementService.getInstance().getRecrutementById(recrutementId);
-		context.setVariable("recrutement", recrutement);
 		
-		templateEngine.process("formulaire_more_recrutement", context, resp.getWriter());
-
-	
+		Integer gcaId = Integer.parseInt(req.getParameter("idGca"));
+		Gca gca = GcaService.getInstance().getGcaById(gcaId);
+		context.setVariable("gca", gca);
+		
+		templateEngine.process("modification_modifier_details_gca", context, resp.getWriter());
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String titreGca =req.getParameter("titreGca");
+        String texteGca =req.getParameter("texteGca");
+		Integer gcaId = Integer.parseInt(req.getParameter("idGca"));
+		GcaService.getInstance().updateGca(gcaId ,titreGca,texteGca);
+		resp.sendRedirect("gca");
+		
 
-		Integer recrutementId = Integer.parseInt(req.getParameter("idRecrutement"));
-		RecrutementService.getInstance().deleteRecrutement(recrutementId);
-		resp.sendRedirect("formulaire_recrutement");
 		 
 	}
 

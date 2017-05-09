@@ -16,11 +16,11 @@ import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-import projet100h.hccgca.pojos.Gca;
-import projet100h.hccgca.services.GcaService;
+import projet100h.hccgca.pojos.Hcc;
+import projet100h.hccgca.services.HccService;
 
-@WebServlet("/supprimer_gca")
-public class ModifSupprimerGcaServlet extends HttpServlet {
+@WebServlet("/modifier_hcc")
+public class ModifModifierHccServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,10 +42,10 @@ public class ModifSupprimerGcaServlet extends HttpServlet {
 		templateEngine.addDialect(new Java8TimeDialect());	
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
-		List<Gca> listGca = GcaService.getInstance().listGca();
-		context.setVariable("gcas", listGca);
+		List<Hcc> listHcc = HccService.getInstance().listHcc();
+		context.setVariable("hccs", listHcc);
 
-		templateEngine.process("modification_supprimer_gca", context, resp.getWriter());
+		templateEngine.process("modification_modifier_hcc", context, resp.getWriter());
 
 }
 	
