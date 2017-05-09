@@ -54,7 +54,7 @@ public class GcaWS {
 	public Response updateGca(@FormParam("idGca") int idGca, @FormParam("titreGca") String titreGca, @FormParam("texteGca") String texteGca){
 		GcaService gcaService = GcaService.getInstance();
 		try {
-			gcaService.saveUpdatedGca(idGca, titreGca, texteGca);
+			gcaService.updateGca(idGca, titreGca, texteGca);
 			return Response.status(200).entity(gson.toJson("")).build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

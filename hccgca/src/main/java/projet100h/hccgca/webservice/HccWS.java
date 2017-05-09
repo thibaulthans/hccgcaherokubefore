@@ -54,7 +54,7 @@ public class HccWS {
 	public Response updateHcc(@FormParam("idHcc") int idHcc, @FormParam("titreHcc") String titreHcc, @FormParam("texteHcc") String texteHcc){
 		HccService hccService = HccService.getInstance();
 		try {
-			hccService.saveUpdatedHcc(idHcc, titreHcc, texteHcc);
+			hccService.updateHcc(idHcc, titreHcc, texteHcc);
 			return Response.status(200).entity(gson.toJson("")).build();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
