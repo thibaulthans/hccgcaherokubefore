@@ -15,10 +15,11 @@ hr{
 
 .margin_footer {
   margin-bottom: 0px;
+  margin-top: 3px;
 }
 
 .white-blue {
-  min-height: 200px;
+  min-height: 180px;
   background-color: #35465f;
   color: white;
 }
@@ -42,11 +43,7 @@ hr{
   font-size: 1.1em;
   height:172px;
   line-height:220px;
-
-/*  width:200px;
-  background:#ccc;
-  margin-left: 10%;
-  text-align:center; */
+  margin: 0px;
 }
 
 #span-description {
@@ -70,9 +67,6 @@ hr{
     height:auto;
     line-height:normal;
     text-align:center;
-
-    /*width: 60%;
-      background:#ccc; */
    }
 
   #span-description {
