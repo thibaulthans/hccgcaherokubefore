@@ -418,7 +418,7 @@ nav {
 	max-width:1920px;
 }
 .navbar-default .navbar-nav>li>a:hover{
-  color: black;
+  color: white;
 }
 
  /** Dropdown select option **/
