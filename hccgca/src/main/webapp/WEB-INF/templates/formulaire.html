@@ -73,13 +73,13 @@
              </tr>
            </thead>
            <tbody>
-             <tr th:each="contact : ${contacts}"class="test" onclick="document.location = 'connexion.html';">
+             <tr th:each="contact : ${contacts}"class="test" onclick="document.location = 'connexion';">
                <th scope="row" th:text="${contact.idContact}"></th>
                <td th:text="${contact.dateContact}"></td>
                <td th:text="${contact.nom}"></td>
                <td th:text="${contact.mail}"></td>
              </tr>
-             <tr th:each="devi : ${devis}"class="test" onclick="document.location = 'connexion.html';">
+             <tr th:each="devi : ${devis}"class="test" onclick="document.location = 'connexion';">
                <th scope="row" th:text="${devi.idDevis}"></th>
                <td th:text="${devi.dateDevis}"></td>
                <td th:text="${devi.nom}"></td>
