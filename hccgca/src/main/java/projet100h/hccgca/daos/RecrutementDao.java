@@ -1,5 +1,7 @@
 package projet100h.hccgca.daos;
 
+import java.awt.Image;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +16,7 @@ import projet100h.hccgca.pojos.Recrutement;
 
 public class RecrutementDao {
 	
-public void saveNewRecrutement(Integer idRecrutement, String prenom, String nom, String mail, String formation, String posteRecherche, String dateRecrutement, String lettreMotivation, String cvPath){
+public void saveNewRecrutement(Integer idRecrutement, String prenom, String nom, String mail, String formation, String posteRecherche, String dateRecrutement, String lettreMotivation, InputStream cv){
 		try {
 			Connection connection = DataSourceProvider.getDataSource().getConnection();
 			
@@ -26,7 +28,7 @@ public void saveNewRecrutement(Integer idRecrutement, String prenom, String nom,
 			stmt.setString(5,posteRecherche);
 			stmt.setString(6,dateRecrutement);
 			stmt.setString(7,lettreMotivation);
-			stmt.setString(8,cvPath);
+			stmt.setBinaryStream(8,cv);
 
 			stmt.executeUpdate();
 			
@@ -87,36 +89,22 @@ public List<Recrutement> listRecrutement() {
 	return recrutements;
 }
 
-public String getcvPath(Integer id) {
+public InputStream getCv(Integer id) {
 	try (Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("SELECT cv FROM recrutement WHERE id = ?")) {
+			PreparedStatement statement = connection.prepareStatement("SELECT cv FROM recrutement WHERE idRecrutement = ?")) {
 		statement.setInt(1, id);
 		try (ResultSet resultSet = statement.executeQuery()) {
 			if (resultSet.next()) {
-				return resultSet.getString("cv");
+				return resultSet.getBinaryStream("cv");
 			}
 		}
 	} catch (SQLException e) {
-		throw new CityExplorerRuntimeException("Error when getting recrutement", e);
+		throw new CityExplorerRuntimeException("Error getting images", e);
 	}
 	return null;
 }
 
 
-public String getCvPath(Integer id) {
-	try (Connection connection = DataSourceProvider.getDataSource().getConnection();
-			PreparedStatement statement = connection.prepareStatement("SELECT cv FROM recrutement WHERE id = ?")) {
-		statement.setInt(1, id);
-		try (ResultSet resultSet = statement.executeQuery()) {
-			if (resultSet.next()) {
-				return resultSet.getString("cv");
-			}
-		}
-	} catch (SQLException e) {
-		throw new CityExplorerRuntimeException("Error when getting recrutement", e);
-	}
-	return null;
-}
 
 }
 
