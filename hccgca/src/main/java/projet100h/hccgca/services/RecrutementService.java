@@ -1,6 +1,8 @@
 package projet100h.hccgca.services;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,7 +20,7 @@ import projet100h.hccgca.pojos.Recrutement;
 public class RecrutementService {
 	
 	private RecrutementDao recrutementDao = new RecrutementDao();
-	private static final String CV_MAIN_DIRECTORY = "C:/Users/HANS Thibault/Desktop/datacv";
+	private static final String CV_MAIN_DIRECTORY ="C:/Users/HANS Thibault/Desktop/hccgcaherokubefore-master/hccgca/src/main/resources"  ;
 	
 	private static class RecrutementServiceHolder {
 		private static RecrutementService instance = 
@@ -29,44 +31,33 @@ public class RecrutementService {
 		return 	RecrutementServiceHolder.instance;
 	}
 	
-	private RecrutementService() {
-	}
 	
-	public void saveNewRecrutement(Integer idRecrutement, String prenom, String nom, String mail, String formation, String posteRecherche, String dateRecrutement, String lettreMotivation, Part cv) throws IOException {
+	public void saveNewRecrutement(Integer idRecrutement, String prenom, String nom, String mail, String formation, String posteRecherche, String dateRecrutement, String lettreMotivation, InputStream cv) throws IOException {
 		
 		if(cv == null) {
 			throw new IllegalArgumentException("An application must have a cv.");
 		}
 		
-	    Path cvPath = Paths.get(CV_MAIN_DIRECTORY, cv.getSubmittedFileName());
-		
-		recrutementDao.saveNewRecrutement(idRecrutement,prenom, nom, mail, formation, posteRecherche, dateRecrutement, lettreMotivation, cvPath.toString());
-		
-		Files.copy(cv.getInputStream(), cvPath);
+		recrutementDao.saveNewRecrutement(idRecrutement,prenom, nom, mail, formation, posteRecherche, dateRecrutement, lettreMotivation, cv);
+	}
+	
 
-	}
 	
-	public Path getCvPatch(Integer idRecrutement) {
-		String cvPathString = recrutementDao.getcvPath(idRecrutement);
-		if(cvPathString == null) {
-			return getDefaultCvPath();
-		} else {
-			Path cvPath = Paths.get(recrutementDao.getcvPath(idRecrutement));
-			if(Files.exists(cvPath)) {
-				return cvPath;
-			} else {
-				return getDefaultCvPath();
-			}
-		}
-		
-	}
-	
-	private Path getDefaultCvPath() {
+	public InputStream getCv(Integer i){
+		InputStream is =  recrutementDao.getCv(i);
 		try {
-			return Paths.get(this.getClass().getClassLoader().getResource("no-cv.png").toURI());
-		} catch (URISyntaxException e) {
-			return null;
+			if(is == null || is.available() == 0){
+				return getDefaultPicture();
+			}else {
+				return is;
+			}
+		} catch (IOException e) {
+			return getDefaultPicture();
 		}
+	}
+	
+	private InputStream getDefaultPicture() {
+		return this.getClass().getClassLoader().getResourceAsStream("city-no-photo.png");
 	}
 	
 	
