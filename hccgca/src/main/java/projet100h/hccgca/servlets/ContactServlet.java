@@ -1,18 +1,10 @@
 package projet100h.hccgca.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
-import java.util.Properties;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import projet100h.hccgca.mail.Mailer;
 import projet100h.hccgca.services.ContactService;
 
 @WebServlet("/contact")
@@ -38,13 +29,6 @@ public class ContactServlet extends AbstractGenericServlet{
 		
 		
 		templateEngine.process("contact", context, resp.getWriter());
-		
-		PrintWriter out = resp.getWriter();  
-	        
-	          
-	    Mailer.send("hccetgca@gmail.com", "test", "test");  
-	    out.print("message has been sent successfully");  
-	    out.close(); 
 	  
 		
 	}
