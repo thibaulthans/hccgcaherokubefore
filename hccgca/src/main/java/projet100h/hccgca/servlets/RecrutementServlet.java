@@ -1,6 +1,7 @@
 package projet100h.hccgca.servlets;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,13 +47,14 @@ public class RecrutementServlet extends AbstractGenericServlet{
 		Date date = new Date();
 		String dateRecrutement =dateFormat.format(date);
 		       
-		Part fileCv=req.getPart("filecv"); //testheroku
+		
+		Part fileCv = req.getPart("filecv");
+		InputStream theFileCv  = fileCv.getInputStream();
 		
 		
 		
 		
-       RecrutementService.getInstance().saveNewRecrutement(null, prenom, nom, mail, formation, posteRecherche, dateRecrutement, lettreMotivation, fileCv);
-		
+       RecrutementService.getInstance().saveNewRecrutement(null, prenom, nom, mail, formation, posteRecherche, dateRecrutement, lettreMotivation, theFileCv);
        resp.sendRedirect("recrutement");
        
 	}	

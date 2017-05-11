@@ -51,7 +51,7 @@ public class DevisServlet extends AbstractGenericServlet{
 
         DevisService.getInstance().saveNewDevis(null, secteurActivite,chiffreAffaire,nbSalarie,missions, valeurFacture, nom, prenom, mail, informationsSupplementaires, dateDevis);
         
-
+        resp.sendRedirect("devis");
 	}
 
 	

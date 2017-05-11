@@ -1,7 +1,9 @@
 package projet100h.hccgca.servlets;
 
 import java.io.IOException;
+import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 
 import javax.servlet.ServletException;
@@ -39,8 +41,6 @@ public class formulaireRecrutementMoreServlet extends AbstractGenericServlet{
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
 		Integer recrutementId = Integer.parseInt(req.getParameter("idRecrutement"));
-		Path cvPath = RecrutementService.getInstance().getCvPatch(recrutementId);
-		Files.copy(cvPath, resp.getOutputStream());
 		Recrutement recrutement = RecrutementService.getInstance().getRecrutementById(recrutementId);
 		context.setVariable("recrutement", recrutement);
 		
@@ -54,6 +54,7 @@ public class formulaireRecrutementMoreServlet extends AbstractGenericServlet{
 
 		Integer recrutementId = Integer.parseInt(req.getParameter("idRecrutement"));
 		RecrutementService.getInstance().deleteRecrutement(recrutementId);
+		
 		resp.sendRedirect("formulaire_recrutement");
 		 
 	}
