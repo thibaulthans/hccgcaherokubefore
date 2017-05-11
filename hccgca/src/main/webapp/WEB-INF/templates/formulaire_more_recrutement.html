@@ -41,23 +41,59 @@
    <div class="container">
      <div class="cadre margin_top_vingt">
        <div class="row">
+       <p class="underline">Date :</p>
+       </div>
+       <div class="row">
        <p th:text="${recrutement.dateRecrutement}"></p>
+       </div>
+       <div class="row">
+       <p class="underline">Prénom :</p>
        </div>
        <div class="row">
        <p  th:text="${recrutement.prenom}"></p>
        </div>
-        <div class="row">
+       <div class="row">
+       <p class="underline">Nom :</p>
+       </div>
+       <div class="row">
        <p  th:text="${recrutement.nom}"></p>
+       </div>
+       <div class="row">
+       <p class="underline">Mail :</p>
        </div>
        <div class="row">
        <p th:text="${recrutement.mail}"></p>
        </div>
        <div class="row">
-       <img th:src="'recrutementcv?id='+${recrutement.idRecrutement}">
+       <p class="underline">Formation :</p>
+       </div>
+       <div class="row">
+       <p th:text="${recrutement.formation}"></p>
+       </div>
+       <div class="row">
+       <p class="underline">Poste recherché :</p>
+       </div>
+       <div class="row">
+       <p th:text="${recrutement.posteRecherche}"></p>
+       </div>
+       <div class="row">
+       <p class="underline">Lettre de motivation :</p>
+       </div>
+       <div class="row">
+       <p th:text="${recrutement.lettreMotivation}"></p>
+       </div>
+       <div class="row">
+       <p class="underline">Curriculum vitae :</p>
+       </div>
+       <div class="row">
+       <iframe th:src="'recrutementcv?idRecrutement='+${recrutement.idRecrutement}" height="100%" width="100%"></iframe>
+       </div>
+       <div class="row">
+       <a th:href="'recrutementcv?idRecrutement='+${recrutement.idRecrutement}">Voir en détail le curriculum vitae</a>
        </div>
      </div>
    </div>
-      <div class="col-xs-12 text_center">
+      <div class="col-xs-12 text_center margin_bottom_vingt">
       <form method="post">
       <input value="Supprimer" class="btn btn-primary margin_top_vingt" type="submit">
       </form>
