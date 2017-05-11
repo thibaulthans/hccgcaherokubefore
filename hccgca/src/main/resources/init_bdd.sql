@@ -8,7 +8,7 @@ CREATE TABLE `recrutement`
 	`formation` VARCHAR(100) NOT NULL,
     `posteRecherche` VARCHAR(100) NOT NULL,
     `dateRecrutement` VARCHAR(100) NOT NULL,
-    `cv` VARCHAR(100) NULL,
+    `cv` longblob NULL,
     `lettreMotivation` VARCHAR(100) NULL,
 	PRIMARY KEY (`idRecrutement`)
 )DEFAULT CHARSET=utf8;
