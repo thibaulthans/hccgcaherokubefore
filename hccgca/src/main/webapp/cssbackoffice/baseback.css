@@ -1,3 +1,7 @@
+a:focus, a:hover {
+	text-decoration: none;
+}
+
 .style_body{
   background-color: #f8f9fa;
 }
