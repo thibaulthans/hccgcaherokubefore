@@ -1,3 +1,7 @@
+a {
+	color: #333;
+}
+
 a:focus, a:hover {
 	text-decoration: none;
 }
